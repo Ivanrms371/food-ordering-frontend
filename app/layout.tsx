@@ -1,15 +1,51 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import "@fontsource-variable/inter";
 import "./globals.css";
+import { SessionHydrator } from "@components/providers/SessionHydrator";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const inter = localFont({
+  src: [
+    {
+      path: "./fonts/Inter-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Inter-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Inter-Semibold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+  ],
+  variable: "--font-cabinet-grotesk",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const cabinetGrotesk = localFont({
+  src: [
+    {
+      path: "./fonts/CabinetGrotesk-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/CabinetGrotesk-Extrabold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "./fonts/CabinetGrotesk-Black.woff2",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-cabinet-grotesk",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -24,9 +60,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`antialiased bg-gray-50 min-h-screen flex flex-col`}>
+        <SessionHydrator />
         {children}
       </body>
     </html>

@@ -1,26 +1,100 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-display: "Inter", "sans-serif";
+
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --container-padding: 10rem;
+  --container-padding-sm: 1rem;
+  --container-padding-md: 1.25rem;
+  --container-padding-lg: 1.5rem;
+  --container-padding-xl: 1.75rem;
+  --container-padding-2xl: 2rem;
+
+  --color-primary-50: oklch(0.5391 0.0511 82.9);
+  --color-primary-100: oklch(0.9249 0.0187 103.44);
+  --color-primary-200: oklch(0.8487 0.0342 97.76);
+  --color-primary-300: oklch(0.7573 0.0526 97.54);
+  --color-primary-400: oklch(0.6796 0.0647 94.21);
+  --color-primary-500: oklch(0.6262 0.0623 91.04);
+  --color-primary-600: oklch(0.5391 0.0511 82.9);
+  --color-primary-700: oklch(0.4674 0.0414 74.87);
+  --color-primary-800: oklch(0.4175 0.0323 64.91);
+  --color-primary-900: oklch(0.3829 0.0266 60.04);
+  --color-primary-950: oklch(0.2642 0.0186 59.73);
+
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-cabinet-grotesk);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@utility container {
+  @apply mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility button-primary {
+  @apply bg-primary-500 hover:bg-primary-700 text-gray-100 rounded-full py-3 px-6 text-sm cursor-pointer w-fit;
+}
+@utility button-disabled {
+  @apply bg-gray-200 text-gray-700 rounded-full py-3 px-6 text-sm cursor-not-allowed w-fit opacity-60 select-none;
+}
+@utility button-primary-with-icon {
+  @apply bg-primary-500 hover:bg-primary-600 text-gray-100 rounded-full py-3 px-6 text-sm cursor-pointer w-fit flex gap-1 items-center;
+}
+@utility button-secondary {
+  @apply border border-gray-300 hover:bg-gray-200 text-gray-700 rounded-full py-3 px-6 text-sm cursor-pointer w-fit;
+}
+@utility button-secondary-with-icon {
+  @apply border border-gray-300 hover:bg-gray-200 text-gray-700 rounded-full py-3 px-6 text-sm cursor-pointer w-fit flex gap-1 items-center;
+}
+
+@utility form-wrapper {
+  @apply flex flex-col gap-4 mt-8;
+}
+@utility input-form {
+  @apply w-full text-sm placeholder:text-sm sm:text-base sm:placeholder:text-base rounded-md border border-gray-200 px-4 py-2 outline-0 focus:border-gray-400 placeholder:text-gray-400 text-gray-700;
+}
+@utility button-primary-form {
+  @apply bg-primary-300 hover:bg-primary-400 text-gray-800 rounded-full py-2 px-4 text-sm sm:text-base w-full cursor-pointer flex items-center justify-center transition;
+}
+@utility button-secondary-form {
+  @apply border border-gray-300 hover:bg-gray-200 text-gray-700 rounded-full py-2 px-4 text-sm sm:text-base cursor-pointer w-full;
+}
+@utility button-secondary-form-with-icon {
+  @apply border border-gray-300 hover:bg-gray-200 text-gray-700 rounded-full py-2 px-4 text-sm sm:text-base cursor-pointer w-full flex items-center justify-center gap-2;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter Variable", sans-serif;
+}
+/* Títulos */
+
+h1,
+h2,
+h3 {
+  font-family: "CabinetGrotesk", sans-serif;
+}
+.cabinet-grotesk {
+  font-family: "CabinetGrotesk", sans-serif;
+}
+
+.font-primary {
+  font-family: var(--font-cabinet-grotesk);
+}
+.heading-one {
+  @apply text-3xl sm:text-4xl md:text-5xl text-gray-800 font-black;
+}
+.align-reponsive {
+  @apply text-center lg:text-left;
+}
+.heading-two {
+  @apply text-3xl text-gray-800 font-extrabold;
+}
+
+.paragraph {
+  @apply md:text-lg text-gray-500 font-normal;
 }
