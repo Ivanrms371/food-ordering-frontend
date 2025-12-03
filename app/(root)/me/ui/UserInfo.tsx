@@ -16,20 +16,20 @@ export const UserInfo = () => {
   if (isLoadingProfile) return <UserInfoSkeleton />;
 
   return (
-    <div className="space-y-3 mt-6 pt-6 border-t border-gray-200">
+    <div className="space-y-3 mt-6 pt-6 border-t border-neutral-200">
       <div className="flex justify-between">
-        <h2 className="text-gray-700 text-xl">Personal Info</h2>
-        <PencilSquareIcon className="size-5 text-gray-500 hover:text-primary-400 transition cursor-pointer" />
+        <h2 className="text-neutral-700 text-xl font-mono">Personal Info</h2>
+        <PencilSquareIcon className="size-5 text-neutral-500 hover:text-primary-400 transition cursor-pointer" />
       </div>
 
       <div className="grid grid-cols-3 gap-8">
-        <div className="bg-white shadow py-4 px-8 rounded-full">
-          <p className="text-gray-500">Full Name</p>
-          <p className="text-gray-700">{user?.fullName}</p>
+        <div className="bg-white shadow-sm py-4 px-8 rounded-lg">
+          <p className="text-neutral-500">Full Name</p>
+          <p className="text-neutral-700">{user?.fullName}</p>
         </div>
-        <div className="bg-white shadow py-4 px-8 rounded-full relative">
-          <p className="text-gray-500">Email Address</p>
-          <p className="text-gray-700">{user?.email}</p>
+        <div className="bg-white shadow-sm py-4 px-8 rounded-lg relative">
+          <p className="text-neutral-500">Email Address</p>
+          <p className="text-neutral-700">{user?.email}</p>
           <span className="absolute top-5  right-5 flex gap-1 items-center text-sm text-gray-700">
             {user?.emailVerifiedAt ? (
               <>
@@ -43,7 +43,7 @@ export const UserInfo = () => {
           </span>
         </div>
         {user?.phone && (
-          <div className="bg-white shadow py-4 px-8 rounded-full relative">
+          <div className="bg-white shadow-sm py-4 px-8 rounded-lg relative">
             <p className="text-gray-500">Phone Number</p>
             <p className="text-gray-700">{user.phone}</p>
             <span className="absolute top-5  right-5 flex gap-1 items-center text-sm text-gray-700">
@@ -73,7 +73,7 @@ const UserInfoSkeleton = () => {
         {Array.from({ length: 3 }).map((_, i) => (
           <div
             key={i}
-            className="h-20 bg-gray-200 rounded-full animate-pulse"
+            className="h-20 bg-gray-200 rounded-lg animate-pulse"
           ></div>
         ))}
       </div>

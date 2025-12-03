@@ -8,13 +8,11 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
   --container-padding: 10rem;
   --container-padding-sm: 1rem;
   --container-padding-md: 1.25rem;
   --container-padding-lg: 1.5rem;
   --container-padding-xl: 1.75rem;
-  --container-padding-2xl: 2rem;
 
   --color-primary-50: oklch(0.5391 0.0511 82.9);
   --color-primary-100: oklch(0.9249 0.0187 103.44);
@@ -28,8 +26,8 @@
   --color-primary-900: oklch(0.3829 0.0266 60.04);
   --color-primary-950: oklch(0.2642 0.0186 59.73);
 
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-cabinet-grotesk);
+  --font-sans: "Inter Variable", "sans-serif";
+  --font-mono: "CabinetGrotesk", "sans-serif";
 }
 
 @utility container {
@@ -37,54 +35,27 @@
 }
 
 @utility button-primary {
-  @apply bg-primary-500 hover:bg-primary-700 text-gray-100 rounded-full py-3 px-6 text-sm cursor-pointer w-fit;
-}
-@utility button-disabled {
-  @apply bg-gray-200 text-gray-700 rounded-full py-3 px-6 text-sm cursor-not-allowed w-fit opacity-60 select-none;
-}
-@utility button-primary-with-icon {
-  @apply bg-primary-500 hover:bg-primary-600 text-gray-100 rounded-full py-3 px-6 text-sm cursor-pointer w-fit flex gap-1 items-center;
+  @apply font-mono text-xs text-neutral-100 font-extrabold uppercase tracking-widest py-3 px-6 rounded-full bg-neutral-800 hover:bg-neutral-600 transition cursor-pointer;
 }
 @utility button-secondary {
-  @apply border border-gray-300 hover:bg-gray-200 text-gray-700 rounded-full py-3 px-6 text-sm cursor-pointer w-fit;
+  @apply font-mono text-xs text-neutral-800 font-extrabold uppercase tracking-widest py-3 px-6 rounded-full bg-neutral-100 hover:bg-neutral-200 transition cursor-pointer;
 }
-@utility button-secondary-with-icon {
-  @apply border border-gray-300 hover:bg-gray-200 text-gray-700 rounded-full py-3 px-6 text-sm cursor-pointer w-fit flex gap-1 items-center;
+
+@utility button-provider {
+  @apply flex gap-2 items-center w-full justify-center font-mono text-xs text-neutral-800 font-extrabold uppercase tracking-widest py-3 px-8 rounded-full bg-neutral-100 hover:bg-neutral-200 transition;
 }
 
 @utility form-wrapper {
   @apply flex flex-col gap-4 mt-8;
 }
 @utility input-form {
-  @apply w-full text-sm placeholder:text-sm sm:text-base sm:placeholder:text-base rounded-md border border-gray-200 px-4 py-2 outline-0 focus:border-gray-400 placeholder:text-gray-400 text-gray-700;
-}
-@utility button-primary-form {
-  @apply bg-primary-300 hover:bg-primary-400 text-gray-800 rounded-full py-2 px-4 text-sm sm:text-base w-full cursor-pointer flex items-center justify-center transition;
-}
-@utility button-secondary-form {
-  @apply border border-gray-300 hover:bg-gray-200 text-gray-700 rounded-full py-2 px-4 text-sm sm:text-base cursor-pointer w-full;
-}
-@utility button-secondary-form-with-icon {
-  @apply border border-gray-300 hover:bg-gray-200 text-gray-700 rounded-full py-2 px-4 text-sm sm:text-base cursor-pointer w-full flex items-center justify-center gap-2;
+  @apply w-full text-sm placeholder:text-sm sm:text-base sm:placeholder:text-base rounded-md border border-neutral-200 px-4 py-2 outline-0 focus:border-neutral-400 placeholder:text-neutral-400 text-neutral-700;
 }
 
 body {
-  font-family: "Inter Variable", sans-serif;
-}
-/* Títulos */
-
-h1,
-h2,
-h3 {
-  font-family: "CabinetGrotesk", sans-serif;
-}
-.cabinet-grotesk {
-  font-family: "CabinetGrotesk", sans-serif;
+  @apply font-sans;
 }
 
-.font-primary {
-  font-family: var(--font-cabinet-grotesk);
-}
 .heading-one {
   @apply text-3xl sm:text-4xl md:text-5xl text-gray-800 font-black;
 }
@@ -92,9 +63,9 @@ h3 {
   @apply text-center lg:text-left;
 }
 .heading-two {
-  @apply text-3xl text-gray-800 font-extrabold;
+  @apply text-3xl text-neutral-800 font-extrabold;
 }
 
 .paragraph {
-  @apply md:text-lg text-gray-500 font-normal;
+  @apply text-neutral-600 font-medium;
 }

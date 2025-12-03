@@ -9,30 +9,29 @@ export const Hero = () => {
         <div className="order-1 lg:order-2 h-full flex justify-center">
           <img
             src="/images/hero-burger-vertical.jpg"
-            className="w-full lg:h-[90%] object-center object-cover rounded-3xl"
+            className="w-full lg:h-[90%] object-center object-cover rounded-full shadow-md"
             alt="Delicious Burger"
           />
         </div>
 
         {/* Text */}
         <div className="order-2 lg:order-1 my-auto">
-          <h1 className="text-5xl md:text-6xl xl:text-7xl font-bold cabinet-grotesk text-gray-700">
+          <h1 className="text-5xl md:text-6xl xl:text-7xl font-bold font-mono text-neutral-400">
             Your Favorite{" "}
-            <span className="font-black text-gray-900 block ">
+            <span className="font-black text-neutral-600 block ">
               Food Delivered{" "}
-              <span className="text-primary-500">Hot & Delicious</span>
             </span>
+              <span className="font-black text-neutral-900 italic">Hot & Delicious</span>
+
           </h1>
-          <p className="text-xl text-gray-500 mb-10">
-            Disfrutá tus platos favoritos sin salir de casa. Entregamos comida
-            caliente, rápida y con el sabor que te encanta. Pedí hoy y sentí la
-            diferencia.
+          <p className="text-lg text-gray-500 mb-10 font-sans font-medium">
+            Enjoy your favorite food without get out from home. We deliver hot & delicious food to your door. Order now and feel the difference.
           </p>
           <div className="flex flex-wrap gap-2 ">
-            <Link href={"/menu"} className="button-primary-with-icon">
+            <Link href={"/menu"} className="button-primary flex gap-1 items-center hover:gap-4 transition-all duration-300 ease-in-out">
               Order Now <ArrowLongRightIcon className="size-5" />
             </Link>
-            <Link href={"/offers"} className="button-secondary-with-icon">
+            <Link href={"/offers"} className="button-secondary flex gap-1 items-center hover:gap-4 transition-all duration-300 ease-in-out">
               View Offers <ArrowLongRightIcon className="size-5" />
             </Link>
           </div>

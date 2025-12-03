@@ -9,8 +9,8 @@ export const HowItWorks = () => {
         </p>
         <DynamicHeading
           beforeText="Three Steps"
-          highlightOne="to Get"
-          highlightTwo="Your Burger"
+          highlightOne="to Order"
+          highlightTwo="Your Food"
         />
         <div className="grid md:grid-cols-3 gap-12 md:gap-8 mt-32">
           <div className="relative">

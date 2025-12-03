@@ -1,7 +1,7 @@
 "use client";
 
-import { ArrowRightEndOnRectangleIcon } from "@node_modules/@heroicons/react/24/outline";
-import { logout } from "@services/authService";
+import { ArrowRightEndOnRectangleIcon, HeartIcon, LockClosedIcon, ShoppingCartIcon, UserIcon } from "@node_modules/@heroicons/react/24/outline";
+import authService from "@services/auth/authService";
 import { useAuthStore } from "@store/auth.store";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -15,7 +15,7 @@ export default function ProfileLayout({
   const pathname = usePathname();
 
   const handleLogout = async () => {
-    const res = await logout();
+    const res = await authService.logout();
   };
 
   return (
@@ -26,29 +26,42 @@ export default function ProfileLayout({
             <Link
               href={"/me"}
               className={twMerge(
-                " py-4 px-4 text-gray-600 w-full block rounded-2xl hover:bg-gray-200/40",
+                " py-4 px-4 text-gray-600 w-full rounded-2xl hover:bg-gray-200/40 flex items-center gap-2",
                 pathname === "/me" && "bg-gray-200/40 "
               )}
             >
+              <UserIcon className="size-5" />
               Profile
             </Link>
             <Link
               href={"/me/security"}
               className={twMerge(
-                " py-4 px-4 text-gray-600 w-full block rounded-2xl hover:bg-gray-200/40",
+                " py-4 px-4 text-gray-600 w-full rounded-2xl hover:bg-gray-200/40 flex items-center gap-2",
                 pathname === "/me/security" && "bg-gray-200/40 "
               )}
             >
+              <LockClosedIcon className="size-5" />
               Security
             </Link>
             <Link
               href={"/me/orders"}
               className={twMerge(
-                " py-4 px-4 text-gray-600 w-full block rounded-2xl hover:bg-gray-200/40",
+                " py-4 px-4 text-gray-600 w-full rounded-2xl hover:bg-gray-200/40 flex items-center gap-2",
                 pathname === "/me/orders" && "bg-gray-200/40 "
               )}
             >
-              My Orders
+              <ShoppingCartIcon className="size-5" />
+              Orders
+            </Link>
+            <Link
+              href={"/me/favorites"}
+              className={twMerge(
+                " py-4 px-4 text-gray-600 w-full rounded-2xl hover:bg-gray-200/40 flex items-center gap-2",
+                pathname === "/me/orders" && "bg-gray-200/40 "
+              )}
+            >
+              <HeartIcon className="size-5" />
+              Favorites
             </Link>
           </nav>
           <button

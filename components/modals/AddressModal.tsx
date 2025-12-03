@@ -147,12 +147,12 @@ export default function AddressModal({
         <div className="flex justify-end gap-2 mt-4">
           <button
             type="button"
-            className="button-secondary-form w-24"
+            className="button-secondary"
             onClick={handleClose}
           >
             Cancel
           </button>
-          <button type="submit" className="button-primary-form w-24">
+          <button type="submit" className="button-primary">
             Save
           </button>
         </div>

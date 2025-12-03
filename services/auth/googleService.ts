@@ -1,0 +1,5 @@
+
+
+export const signInWithGoogle = async () => {
+    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`;
+}

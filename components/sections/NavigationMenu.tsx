@@ -65,7 +65,6 @@ export const NavigationMenu = ({
                     <li key={link.label}>
                       <button
                         onClick={() => {
-                          /* my logit to logout :) */
                         }}
                         className="text-4xl text-gray-400 flex items-center justify-between gap-2 group hover:text-gray-100 hover:bg-gray-900/80 transition-all duration-300 p-4 rounded-2xl w-full"
                       >

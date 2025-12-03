@@ -6,7 +6,7 @@ export default function SignUpPage() {
     <FormWrapper
       title="Create your account"
       subtitle="You already have an account?"
-      linkTo="/login"
+      linkTo="/sign-in"
       linkText="Sign in"
     >
       <SignUpForm />

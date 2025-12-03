@@ -1,20 +1,22 @@
 "use client";
 
 import { useEffect } from "react";
-import { refreshSession } from "@services/authService";
 import { useAuthStore } from "@store/auth.store";
+import authService from "@services/auth/authService";
 
 export const SessionHydrator = () => {
-  const { accessToken } = useAuthStore();
+  const { accessToken, isAuthenticated, setIsLoading } = useAuthStore();
 
   useEffect(() => {
     const hydrateSession = async () => {
-      if (!accessToken) {
-        const { error } = await refreshSession();
+      setIsLoading(true);
+      if (!accessToken || !isAuthenticated) {
+        const { error } = await authService.refreshSession();
         if (error) {
           console.log("Session refresh error:", error);
         }
       }
+      setIsLoading(false);
     };
     hydrateSession();
   }, []);

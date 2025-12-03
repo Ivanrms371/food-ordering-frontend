@@ -1,3 +1,6 @@
+"use client";
+import authService from "@services/auth/authService";
+
 export const SignUpForm = () => {
   return (
     <form action="" className="form-wrapper">
@@ -23,29 +26,37 @@ export const SignUpForm = () => {
         />
       </div>
 
-      <p className="text-gray-500 align-reponsive">
+      <p className="paragraphalign-reponsive">
         Your password must be at least 8 characters long and contain at least
         one number and one uppercase letter.
       </p>
 
-      <input type="submit" className="button-primary-form" value={"Sign up"} />
+      <input type="submit" className="button-primary" value={"Sign up"} />
 
-      <div className="my-2 flex justify-center flex-row items-center gap-5">
-        <div className="border-b border-gray-700 w-full"></div>
-        <span className="flex-1 w-full text-nowrap  text-gray-500 font-medium">
-          Or continue with
+            <div className="my-2 flex justify-center flex-row items-center gap-5">
+        <div className="border-b border-gray-200 w-full"></div>
+        <span className="flex-1 w-full text-nowrap  text-gray-500 font-medium uppercase text-xs">
+          Or 
         </span>
-        <div className="border-b border-gray-700 w-full"></div>
+        <div className="border-b border-gray-200 w-full"></div>
       </div>
 
-      <div className="flex justify-center flex-row items-center gap-2">
-        <button className="button-secondary-form-with-icon">
-          <img src="/images/google.png" alt="" className="size-4 sm:size-5" />
-          Google
+      <div className="flex flex-col gap-4">
+        <button className="button-provider" type="button" onClick={() => authService.signInWithGoogle()}>
+          <img
+            src="/images/google.png"
+            alt="Google"
+            className="size-4 sm:size-5"
+          />
+           Continue with Google
         </button>
-        <button className="button-secondary-form-with-icon">
-          <img src="/images/facebook.png" alt="" className="size-4 sm:size-5" />
-          Facebook
+        <button className="button-provider" type="button" onClick={() => authService.signInWithFacebook()}>
+          <img
+            src="/images/facebook.png"
+            alt="Facebook"
+            className="size-4 sm:size-5"
+          />
+          Continue with Facebook
         </button>
       </div>
     </form>

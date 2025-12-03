@@ -11,16 +11,16 @@ export const BrandLogo = ({
   effect = true,
 }: BrandLogoProps) => {
   return (
-    <Link href={"/"} className={twMerge("relative block size-16", className)}>
+    <Link href={"/"} className={twMerge("relative block size-20", className)}>
       <img
-        src="/images/wakanda.png"
+        src="/logo.png"
         alt="Wakanda Logo"
         className="absolute inset-0 z-10"
       />
       {effect && (
         <img
-          src="/images/wakanda.png"
-          alt="Wakanda Logo"
+          src="/logo.png"
+          alt="El Fondito Gourmet"
           className="absolute inset-0 blur-sm"
         />
       )}

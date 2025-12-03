@@ -55,8 +55,7 @@ api.interceptors.response.use(
 
 export const ErrorHandler = (error: unknown) => {
   if (isAxiosError(error)) {
-    console.log("Aqui4");
-
+    console.log(error.response?.data);
     return {
       error:
         (error.response?.data as any)?.message ||
@@ -64,6 +63,7 @@ export const ErrorHandler = (error: unknown) => {
         "Unexpected error has occurred",
     };
   }
+  console.log("not axios");
   return {
     error: "Unexpected error has occurred",
   };

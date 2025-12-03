@@ -12,7 +12,7 @@ export const AuthButton = ({ value, isLoading }: Props) => {
     <button
       type="submit"
       className={twMerge(
-        "button-primary-form",
+        "font-primary text-xs text-neutral-100 font-extrabold uppercase tracking-widest py-3 px-8 rounded-full bg-neutral-800 hover:bg-neutral-600 transition font-primary",
         isLoading && "bg-primary-200 hover:bg-primary-200"
       )}
     >

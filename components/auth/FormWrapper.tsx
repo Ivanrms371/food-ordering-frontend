@@ -18,10 +18,10 @@ export const FormWrapper = ({
   return (
     <>
       <div className="mb-6">
-        <h1 className="heading-one align-responsive">{title}</h1>
+        <h1 className="heading-one align-responsive font-mono mb-2">{title}</h1>
         <p className="paragraph">
           {subtitle}{" "}
-          <Link href={linkTo} className="text-primary-600">
+          <Link href={linkTo} className="text-primary-500 hover:underline">
             {linkText}
           </Link>
         </p>

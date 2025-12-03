@@ -4,27 +4,34 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { loginCredentials } from "@services/authService";
-import { LoginCredentials } from "@interfaces/auth.interface";
+import { SignInData } from "@interfaces/auth.interface";
 import { AuthButton } from "./ui/AuthButton";
+import { toast } from "sonner";
+import authService from "@services/auth/authService";
 
 export const SignInForm = () => {
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<LoginCredentials>();
+  } = useForm<SignInData>();
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = async (data: LoginCredentials) => {
+  const onSubmit = async (data: SignInData) => {
     setIsLoading(true);
-    const res = await loginCredentials(data);
+    toast.loading("Signing in...");
+    const res = await authService.signInCredentials(data);
     setIsLoading(false);
+    toast.dismiss()
     if (!res.error) {
+      toast.success("Redirecting...");
       router.push("/me");
+    }  else {
+      toast.error(res.error);
     }
+
   };
 
   return (
@@ -61,7 +68,7 @@ export const SignInForm = () => {
         )}
       </div>
 
-      <Link href={"/forgot-password"} className="text-gray-500 align-reponsive">
+      <Link href={"/forgot-password"} className="paragraph align-responsive">
         Did you forget your password?
       </Link>
 
@@ -69,28 +76,28 @@ export const SignInForm = () => {
 
       <div className="my-2 flex justify-center flex-row items-center gap-5">
         <div className="border-b border-gray-200 w-full"></div>
-        <span className="flex-1 w-full text-nowrap  text-gray-500 font-medium">
-          Or continue with
+        <span className="flex-1 w-full text-nowrap  text-gray-500 font-medium uppercase text-xs">
+          Or 
         </span>
         <div className="border-b border-gray-200 w-full"></div>
       </div>
 
-      <div className="flex justify-center flex-row items-center gap-2">
-        <button className="button-secondary-form-with-icon">
+      <div className="flex flex-col gap-4">
+        <button className="button-provider" type="button" onClick={() => authService.signInWithGoogle()}>
           <img
             src="/images/google.png"
             alt="Google"
             className="size-4 sm:size-5"
           />
-          Google
+           Continue with Google
         </button>
-        <button className="button-secondary-form-with-icon">
+        <button className="button-provider" type="button" onClick={() => authService.signInWithFacebook()}>
           <img
             src="/images/facebook.png"
             alt="Facebook"
             className="size-4 sm:size-5"
           />
-          Facebook
+          Continue with Facebook
         </button>
       </div>
     </form>

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "@fontsource-variable/inter";
 import "./globals.css";
 import { SessionHydrator } from "@components/providers/SessionHydrator";
+import { Toaster } from "sonner";
 
 const inter = localFont({
   src: [
@@ -60,7 +61,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased bg-gray-50 min-h-screen flex flex-col`}>
+      <body className={`antialiased min-h-screen flex flex-col`}>
+        <Toaster position="top-right" duration={3000} visibleToasts={1} />
         <SessionHydrator />
         {children}
       </body>
