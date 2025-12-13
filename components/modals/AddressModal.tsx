@@ -1,16 +1,11 @@
 "use client";
 
-import Modal from "./Modal";
-import { useState, useEffect } from "react";
+import Modal from "../ui/Modal";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { UserAddressFormData } from "@interfaces/user.interface";
-
-interface AddressModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  initialData: UserAddressFormData | null;
-  onSave: (address: UserAddressFormData) => Promise<void>;
-}
+import { useModalStore } from "@store/modal.store";
+import { addNewAddress, updateAddress } from "@services/userAddressService";
 
 const addressInitialState: UserAddressFormData = {
   street: "",
@@ -19,12 +14,19 @@ const addressInitialState: UserAddressFormData = {
   label: "",
 };
 
-export default function AddressModal({
-  isOpen,
-  onClose,
-  initialData,
-  onSave,
-}: AddressModalProps) {
+export default function AddressModal() {
+  const {
+    modals: { AddressModal },
+    closeModal,
+  } = useModalStore();
+
+  const isOpen = AddressModal?.isOpen ?? false;
+  const initialData = AddressModal?.props?.initialData ?? null;
+
+  useEffect(() => {
+    reset(initialData || addressInitialState);
+  }, [isOpen]);
+
   const {
     handleSubmit,
     register,
@@ -34,9 +36,12 @@ export default function AddressModal({
     defaultValues: initialData || addressInitialState,
   });
 
-  useEffect(() => {
-    if (isOpen) reset(initialData || addressInitialState);
-  }, [isOpen]);
+  const onSave = async (addressData: UserAddressFormData) => {
+    if (addressData?.id) {
+      return await updateAddress(addressData.id, addressData);
+    }
+    return await addNewAddress(addressData);
+  };
 
   const onSubmit = async (formData: UserAddressFormData) => {
     const res = await onSave(formData);
@@ -44,8 +49,8 @@ export default function AddressModal({
   };
 
   const handleClose = () => {
-    reset();
-    onClose();
+    closeModal("AddressModal");
+    reset(addressInitialState);
   };
 
   return (

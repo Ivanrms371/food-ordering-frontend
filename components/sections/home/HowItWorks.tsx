@@ -1,5 +1,3 @@
-import { DynamicHeading } from "../ui/DynamicHeading";
-
 export const HowItWorks = () => {
   return (
     <section className="py-32">
@@ -7,11 +5,7 @@ export const HowItWorks = () => {
         <p className="uppercase text-primary-600 text-center font-bold mb-4 text-lg">
           Easy. Fast. Delicious.
         </p>
-        <DynamicHeading
-          beforeText="Three Steps"
-          highlightOne="to Order"
-          highlightTwo="Your Food"
-        />
+
         <div className="grid md:grid-cols-3 gap-12 md:gap-8 mt-32">
           <div className="relative">
             <div className="text-center">

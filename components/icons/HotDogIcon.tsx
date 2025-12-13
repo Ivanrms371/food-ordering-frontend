@@ -12,7 +12,7 @@ export const HotDogIcon = (props: SVGProps<SVGSVGElement>) => {
       viewBox="0 0 46.354 46.354"
       xmlSpace="preserve"
       {...props}
-      className="size-14 fill-neutral-400 hover:fill-red-600 hover:scale-125 transition-all duration-300"
+      className="size-14 fill-gray-400 hover:fill-red-600 hover:scale-125 transition-all duration-300"
     >
       <g>
         <path

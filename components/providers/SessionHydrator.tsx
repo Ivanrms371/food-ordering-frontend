@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useAuthStore } from "@store/auth.store";
 import authService from "@services/auth/authService";
+import { logger } from "@utils/logger";
 
 export const SessionHydrator = () => {
   const { accessToken, isAuthenticated, setIsLoading } = useAuthStore();
@@ -13,7 +14,7 @@ export const SessionHydrator = () => {
       if (!accessToken || !isAuthenticated) {
         const { error } = await authService.refreshSession();
         if (error) {
-          console.log("Session refresh error:", error);
+          logger.error("Session refresh error:", error);
         }
       }
       setIsLoading(false);

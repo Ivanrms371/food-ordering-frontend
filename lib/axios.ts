@@ -22,8 +22,7 @@ api.interceptors.response.use(
   (res) => res,
   async (err: AxiosError) => {
     const originalRequest = err.config as any;
-    const { setAccessToken, setIsAuthenticated, clearAuth } =
-      useAuthStore.getState();
+    const { setSession, clearAuth } = useAuthStore.getState();
 
     if (
       err.response?.status === 401 &&
@@ -40,8 +39,7 @@ api.interceptors.response.use(
         );
 
         const { accessToken } = res.data;
-        setAccessToken(accessToken);
-        setIsAuthenticated(true);
+        setSession(accessToken);
         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
         return api(originalRequest);
       } catch (err) {
@@ -55,7 +53,6 @@ api.interceptors.response.use(
 
 export const ErrorHandler = (error: unknown) => {
   if (isAxiosError(error)) {
-    console.log(error.response?.data);
     return {
       error:
         (error.response?.data as any)?.message ||
@@ -63,7 +60,6 @@ export const ErrorHandler = (error: unknown) => {
         "Unexpected error has occurred",
     };
   }
-  console.log("not axios");
   return {
     error: "Unexpected error has occurred",
   };

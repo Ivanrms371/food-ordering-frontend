@@ -1,33 +1,29 @@
-export interface DishSummary {
+export interface PopularDishResponse {
   id: string;
   name: string;
   slug: string;
   description: string;
-  price: number;
   image: string;
 
-  // indicates whether the user marked this dish as a favorite
-  isFavorite: boolean;
+  price: number; // precio original
+  discountApplied: number; // descuento aplicado
+  discountPrice?: number; // precio final con descuento (opcional)
 
-  // List of active offers applied to this dish
-  offers: OfferSummary[];
+  rating: number; // promedio
+  reviewsCount: number; // cantidad de reseñas
+  isFavorite: boolean; // si el usuario lo marcó como favorito
 
-  // average rating
-  rating: number;
-  reviewsCount: number;
-
-  // Category (only the necessary information to display)
+  offers: OfferSummary[]; // info resumida de ofertas activas
   category: {
     id: string;
     name: string;
-    slug: string;
   };
 }
 
 export interface OfferSummary {
   id: string;
   title: string;
-  discountPercentage?: number;
   discountPrice?: number;
+  discountPercentage?: number;
   expiresAt?: string | null;
 }

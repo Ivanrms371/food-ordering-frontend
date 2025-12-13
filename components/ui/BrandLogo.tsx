@@ -4,11 +4,13 @@ import { twMerge } from "tailwind-merge";
 type BrandLogoProps = {
   className?: string;
   effect?: boolean;
+  isOpen?: boolean;
 };
 
 export const BrandLogo = ({
   className = "",
   effect = true,
+  isOpen = true,
 }: BrandLogoProps) => {
   return (
     <Link href={"/"} className={twMerge("relative block size-20", className)}>

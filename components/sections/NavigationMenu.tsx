@@ -1,16 +1,17 @@
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import { ArrowUpRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 export const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Menu", href: "/restaurants" },
-  { label: "Cart", href: "/cart" },
-  { label: "Orders", href: "/orders", requiredAuth: true },
-  { label: "Favorites", href: "/favorites", requiredAuth: true },
-  { label: "Log In", href: "/sign-in", requiredAuth: false },
-  { label: "Join Us", href: "/sign-up", requiredAuth: false },
-  { label: "Profile", href: "/profile", icon: "user", requiredAuth: true },
+  { label: "About", href: "/about" },
+  { label: "Menu", href: "/menu" },
+  { label: "Story", href: "/story" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact", href: "/contact" },
+  { label: "Sign In", href: "/sign-in" },
+  { label: "Sign Up", href: "/sign-up" },
+  { label: "Profile", href: "/profile" },
   { label: "Log Out", action: "logout", requiredAuth: true },
 ];
 
@@ -36,7 +37,7 @@ export const NavigationMenu = ({
       return () => clearTimeout(timeout);
     } else {
       setAnimation(false);
-      timeout = setTimeout(() => setIsVisible(false), 1000);
+      timeout = setTimeout(() => setIsVisible(false), 500);
     }
     return () => clearTimeout(timeout);
   }, [isMenuOpen]);
@@ -47,12 +48,19 @@ export const NavigationMenu = ({
     <>
       <nav
         className={twMerge(
-          "flex flex-col gap-1 max-w-screen-md mx-auto w-full  transition duration-1000 z-30",
+          "fixed -translate-x-1/2 left-1/2 flex flex-col gap-1 max-w-screen-md mx-auto justify-center items-center w-full transition duration-500 z-30 p-1",
           animation ? "translate-y-0 opacity-100" : "-translate-y-20 opacity-0"
         )}
       >
-        <div className=" bg-gray-900/60 rounded-3xl p-8">
-          <ul className="flex flex-col gap-2">
+        <div className=" bg-gray-900/70 rounded-3xl w-full p-6 relative">
+          <button
+            type="button"
+            onClick={handleClose}
+            className="absolute top-4 right-4"
+          >
+            <XMarkIcon className="size-12 text-gray-400 stroke-[1.5px] cursor-pointer bg-gray-900/80 p-3 rounded-full" />
+          </button>
+          <ul className="flex flex-col gap-2 mt-14">
             {navLinks
               .filter(
                 (link) =>
@@ -64,8 +72,7 @@ export const NavigationMenu = ({
                   return (
                     <li key={link.label}>
                       <button
-                        onClick={() => {
-                        }}
+                        onClick={() => {}}
                         className="text-4xl text-gray-400 flex items-center justify-between gap-2 group hover:text-gray-100 hover:bg-gray-900/80 transition-all duration-300 p-4 rounded-2xl w-full"
                       >
                         {link.label}
@@ -77,7 +84,7 @@ export const NavigationMenu = ({
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-4xl text-gray-400 flex items-center justify-between gap-2 group hover:text-gray-100 hover:bg-gray-900/80 transition-all duration-300 p-4 rounded-2xl"
+                      className="text-3xl text-gray-400 flex items-center justify-between gap-2 group hover:text-gray-100 hover:bg-gray-900/80 transition-all duration-300 p-4 rounded-2xl"
                     >
                       {link.label}
                       <ArrowUpRightIcon className="size-6 text-gray-400 opacity-0 group-hover:opacity-100 group-hover:text-gray-100 stroke-2 scale-0 group-hover:scale-100 transition-all duration-300" />
@@ -87,7 +94,7 @@ export const NavigationMenu = ({
               })}
           </ul>
         </div>
-        <div className="bg-gray-900/60 rounded-3xl p-8 px-12">
+        <div className="bg-gray-900/60 rounded-3xl p-8 px-12 w-full">
           <div className="flex gap-4 items-center justify-between">
             <p className="text-3xl text-gray-400">Our Social Networks</p>
             <div className="flex gap-2">

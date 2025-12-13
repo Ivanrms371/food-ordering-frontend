@@ -4,6 +4,11 @@ import "@fontsource-variable/inter";
 import "./globals.css";
 import { SessionHydrator } from "@components/providers/SessionHydrator";
 import { Toaster } from "sonner";
+import Modal from "@components/ui/Modal";
+import AddressModal from "@components/modals/AddressModal";
+import { CartItemModal } from "@components/modals/cart-item-modal/CartItemModal";
+import { TanstackProvider } from "@components/providers/TanstackProvider";
+import { CartDrawer } from "@components/cart/CartDrawer";
 
 const inter = localFont({
   src: [
@@ -62,9 +67,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased min-h-screen flex flex-col`}>
-        <Toaster position="top-right" duration={3000} visibleToasts={1} />
+        <Toaster
+          position="top-right"
+          richColors
+          duration={3000}
+          visibleToasts={1}
+        />
+
         <SessionHydrator />
-        {children}
+        <TanstackProvider>
+          {children}
+          <AddressModal />
+          <CartItemModal />
+          <CartDrawer />
+        </TanstackProvider>
       </body>
     </html>
   );

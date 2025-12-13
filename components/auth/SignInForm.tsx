@@ -24,14 +24,13 @@ export const SignInForm = () => {
     toast.loading("Signing in...");
     const res = await authService.signInCredentials(data);
     setIsLoading(false);
-    toast.dismiss()
+    toast.dismiss();
     if (!res.error) {
       toast.success("Redirecting...");
       router.push("/me");
-    }  else {
+    } else {
       toast.error(res.error);
     }
-
   };
 
   return (
@@ -77,21 +76,29 @@ export const SignInForm = () => {
       <div className="my-2 flex justify-center flex-row items-center gap-5">
         <div className="border-b border-gray-200 w-full"></div>
         <span className="flex-1 w-full text-nowrap  text-gray-500 font-medium uppercase text-xs">
-          Or 
+          Or
         </span>
         <div className="border-b border-gray-200 w-full"></div>
       </div>
 
       <div className="flex flex-col gap-4">
-        <button className="button-provider" type="button" onClick={() => authService.signInWithGoogle()}>
+        <button
+          className="button-provider"
+          type="button"
+          onClick={() => authService.signInWithGoogle()}
+        >
           <img
             src="/images/google.png"
             alt="Google"
             className="size-4 sm:size-5"
           />
-           Continue with Google
+          Continue with Google
         </button>
-        <button className="button-provider" type="button" onClick={() => authService.signInWithFacebook()}>
+        <button
+          className="button-provider"
+          type="button"
+          onClick={() => authService.signInWithFacebook()}
+        >
           <img
             src="/images/facebook.png"
             alt="Facebook"

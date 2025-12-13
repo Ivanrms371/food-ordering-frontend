@@ -31,20 +31,20 @@ export const UserMenu = ({ isMenuOpen, setIsMenuOpen }: Props) => {
     >
       <Link
         href="/me"
-        className="hover:bg-neutral-100 px-6 py-3 rounded-t-3xl text-neutral-700 hover:text-neutral-950 transition duration-300 ease-in-out text-sm"
+        className="hover:bg-gray-100 px-6 py-3 rounded-t-3xl text-gray-700 hover:text-gray-950 transition duration-300 ease-in-out text-sm"
       >
         Profile
       </Link>
       <Link
         href="/orders"
-        className="hover:bg-neutral-100 px-6 py-3 text-neutral-700 hover:text-neutral-950 transition duration-300 ease-in-out text-sm"
+        className="hover:bg-gray-100 px-6 py-3 text-gray-700 hover:text-gray-950 transition duration-300 ease-in-out text-sm"
       >
         Orders
       </Link>
       <button
         onClick={handleLogout}
         type="button"
-        className="text-left cursor-pointer hover:bg-neutral-100 px-6 py-3 rounded-b-3xl text-neutral-700 hover:text-neutral-950 transition duration-300 ease-in-out text-sm"
+        className="text-left cursor-pointer hover:bg-gray-100 px-6 py-3 rounded-b-3xl text-gray-700 hover:text-gray-950 transition duration-300 ease-in-out text-sm"
       >
         Logout
       </button>
