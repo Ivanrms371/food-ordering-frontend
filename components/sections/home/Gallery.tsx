@@ -1,6 +1,6 @@
-import { ElementAnimated } from "@components/animated/ElementAnimated";
-import { LyricsAnimated } from "@components/animated/LyricsAnimated";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
+import { LyricsAnimated } from "@/components/animated/LyricsAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 
 export const Gallery = () => {
   return (

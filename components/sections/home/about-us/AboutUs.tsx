@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { LyricsAnimated } from "@components/animated/LyricsAnimated";
-import { ElementAnimated } from "@components/animated/ElementAnimated";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
-import { features } from "@constants/feature";
+import { LyricsAnimated } from "@/components/animated/LyricsAnimated";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
+import { features } from "@/constants/feature";
 import { FeatureCard } from "./FeatureCard";
 
 export const AboutUs = () => {

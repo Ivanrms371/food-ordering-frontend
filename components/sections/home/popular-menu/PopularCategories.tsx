@@ -1,10 +1,10 @@
-import { ElementAnimated } from "@components/animated/ElementAnimated";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
-import { BurgerIcon } from "@components/icons/BurgerIcon";
-import { ChickenIcon } from "@components/icons/ChickenIcon";
-import { HotDogIcon } from "@components/icons/HotDogIcon";
-import { PizzaIcon } from "@components/icons/PizzaIcon";
-import { SandwichIcon } from "@components/icons/SandwichIcon";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
+import { BurgerIcon } from "@/components/icons/BurgerIcon";
+import { ChickenIcon } from "@/components/icons/ChickenIcon";
+import { HotDogIcon } from "@/components/icons/HotDogIcon";
+import { PizzaIcon } from "@/components/icons/PizzaIcon";
+import { SandwichIcon } from "@/components/icons/SandwichIcon";
 
 interface Category {
   name: string;

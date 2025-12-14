@@ -1,6 +1,6 @@
-import { api, ErrorHandler } from "@lib/axios";
-import { SignInData, SignUpData } from "@interfaces/auth.interface";
-import { useAuthStore } from "@store/auth.store";
+import { api, ErrorHandler } from "@/lib/axios";
+import { SignInData, SignUpData } from "@/interfaces/auth.interface";
+import { useAuthStore } from "@/store/auth.store";
 import CredentialsStrategy from "./credentialsStrategy";
 
 class AuthService {

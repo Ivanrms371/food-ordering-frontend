@@ -1,30 +1,28 @@
-import { CartItem as CartItemType } from "@interfaces/order-item.interface";
+import { CartItem as CartItemType } from "@/interfaces/order-item.interface";
 import { ArrowDownIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { useCartStore } from "@store/cart.store";
-import { formatCurrency } from "@utils/currency";
+import { useCartStore } from "@/store/cart.store";
+import { formatCurrency } from "@/utils/currency";
 import React, { Fragment } from "react";
-import { QuantitySelector } from "@components/modals/cart-item-modal/QuantitySelector";
-import { useModalStore } from "@store/modal.store";
-import { useCartUIStore } from "@store/cart-ui.store";
-import { ElementAnimated } from "@components/animated/ElementAnimated";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
-import { ListItemAnimated } from "@components/animated/ListItemAnimated";
+import { QuantitySelector } from "@/components/modals/cart-item-modal/QuantitySelector";
+import { useModalStore } from "@/store/modal.store";
+import { useCartUIStore } from "@/store/cart-ui.store";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
+import { ListItemAnimated } from "@/components/animated/ListItemAnimated";
 
 interface Props {
   item: CartItemType;
   index: number;
+  onEdit: (item: CartItemType) => void;
 }
 
-export const CartItem = ({ item, index }: Props) => {
-  const { openModal } = useModalStore();
+export const CartItem = ({ item, index, onEdit }: Props) => {
   const {
     calculateSubtotalItem,
     decreaseQuantity,
     increaseQuantity,
-    setCartItem,
     removeItemFromCart,
   } = useCartStore();
-  const { closeCart } = useCartUIStore();
 
   const hasCustomizations = item.customizationCategories?.some((category) =>
     category.customizationOptions?.some((option) => option.selected === true)
@@ -40,8 +38,7 @@ export const CartItem = ({ item, index }: Props) => {
         x: 20,
         transition: { duration: 0.3, delay: 0 },
       }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
+      animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3, delay: 0.2 + index * 0.2 }}
     >
       <div className="flex">
@@ -53,8 +50,7 @@ export const CartItem = ({ item, index }: Props) => {
             <div className="flex justify-between  items-center">
               <TextBlockAnimated
                 initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ amount: 0.5, once: true }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 + index * 0.2 }}
               >
                 <h3 className="text-lg text-gray-900 font-medium">
@@ -63,8 +59,7 @@ export const CartItem = ({ item, index }: Props) => {
               </TextBlockAnimated>
               <TextBlockAnimated
                 initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ amount: 0.5, once: true }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 + index * 0.2 }}
               >
                 <p className="text-lg font-bold text-gray-700 font-mono flex justify-start flex-row gap-2 items-center">
@@ -74,8 +69,7 @@ export const CartItem = ({ item, index }: Props) => {
             </div>
             <TextBlockAnimated
               initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ amount: 0.5, once: true }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: 0.15 + index * 0.2 }}
             >
               <p className="font-bold text-gray-700 font-mono flex justify-start flex-row gap-2 items-center">
@@ -106,8 +100,7 @@ export const CartItem = ({ item, index }: Props) => {
                               <ListItemAnimated
                                 key={option.id}
                                 initial={{ opacity: 0, x: -10 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ amount: 0.5, once: true }}
+                                animate={{ opacity: 1, x: 0 }}
                                 transition={{
                                   duration: 0.3,
                                   delay:
@@ -138,11 +131,7 @@ export const CartItem = ({ item, index }: Props) => {
         <button
           className=" text-gray-700 flex items-center text-sm gap-2"
           type="button"
-          onClick={() => {
-            closeCart();
-            openModal("OrderItemModal");
-            setCartItem(item);
-          }}
+          onClick={() => onEdit(item)}
         >
           Edit
         </button>
@@ -155,8 +144,7 @@ export const CartItem = ({ item, index }: Props) => {
           />
           <ElementAnimated
             initial={{ opacity: 0, scale: 0.75 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ amount: 0.5, once: true }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: 0.15 + index * 0.1 }}
           >
             <button

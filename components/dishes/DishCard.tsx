@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { PopularDishResponse } from "@interfaces/dish.interface";
-import { formatCurrency } from "@utils/currency";
+import { PopularDishResponse } from "@/interfaces/dish.interface";
+import { formatCurrency } from "@/utils/currency";
 import { HeartIcon as HeartIconOutline } from "@heroicons/react/24/outline";
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/24/solid";
 import { StarRating } from "../ui/StarRaiting";
-import favoritesService from "@services/favorites/favoritesService";
+import favoritesService from "@/services/favorites/favoritesService";
 import { toast } from "sonner";
-import { useModalStore } from "@store/modal.store";
-import { useCartStore } from "@store/cart.store";
-import { ElementAnimated } from "@components/animated/ElementAnimated";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
+import { useModalStore } from "@/store/modal.store";
+import { useCartStore } from "@/store/cart.store";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 
 interface Props {
   dish: PopularDishResponse;

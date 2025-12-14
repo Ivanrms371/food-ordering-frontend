@@ -3,9 +3,9 @@
 import Modal from "../ui/Modal";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { UserAddressFormData } from "@interfaces/user.interface";
-import { useModalStore } from "@store/modal.store";
-import { addNewAddress, updateAddress } from "@services/userAddressService";
+import { UserAddressFormData } from "@/interfaces/user.interface";
+import { useModalStore } from "@/store/modal.store";
+import { addNewAddress, updateAddress } from "@/services/userAddressService";
 
 const addressInitialState: UserAddressFormData = {
   street: "",

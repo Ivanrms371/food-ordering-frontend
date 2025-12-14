@@ -1,7 +1,7 @@
-import { LyricsAnimated } from "@components/animated/LyricsAnimated";
+import { LyricsAnimated } from "@/components/animated/LyricsAnimated";
 import { PopularCategories } from "./PopularCategories";
 import { PopularDishes } from "./PopularDishes";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 
 export const PopularMenu = () => {
   return (

@@ -1,9 +1,9 @@
-import { api } from "@lib/axios";
-import { useAuthStore } from "@store/auth.store";
-import { PopularDishResponse } from "@interfaces/dish.interface";
-import { logger } from "@utils/logger";
+import { api } from "@/lib/axios";
+import { useAuthStore } from "@/store/auth.store";
+import { PopularDishResponse } from "@/interfaces/dish.interface";
+import { logger } from "@/utils/logger";
 import { log } from "console";
-import { CustomizationCategory } from "@interfaces/customization.interface";
+import { CustomizationCategory } from "@/interfaces/customization.interface";
 
 class DishesService {
   constructor() {}

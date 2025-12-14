@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { CartItem } from "@interfaces/order-item.interface";
+import { CartItem } from "@/interfaces/order-item.interface";
 
 interface CartStore {
   cart: CartItem[];

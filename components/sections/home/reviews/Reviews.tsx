@@ -1,5 +1,5 @@
-import { LyricsAnimated } from "@components/animated/LyricsAnimated";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
+import { LyricsAnimated } from "@/components/animated/LyricsAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 import { ReviewsGrid } from "./ReviewsGrid";
 
 export const Reviews = () => {

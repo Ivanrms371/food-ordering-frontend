@@ -1,5 +1,5 @@
-import error from "@node_modules/next/error";
-import { useAuthStore } from "@store/auth.store";
+import error from "next/error";
+import { useAuthStore } from "@/store/auth.store";
 import axios, { isAxiosError, AxiosError } from "axios";
 
 export const api = axios.create({

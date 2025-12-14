@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { useAuthStore } from "@store/auth.store";
+import { useAuthStore } from "@/store/auth.store";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { UserAddress } from "@interfaces/user.interface";
+import { UserAddress } from "@/interfaces/user.interface";
 import {
   addNewAddress,
   deleteAddress,
   updateAddress,
-} from "@services/userAddressService";
-import AddressModal from "@components/modals/AddressModal";
-import { useModalStore } from "@store/modal.store";
+} from "@/services/userAddressService";
+import AddressModal from "@/components/modals/AddressModal";
+import { useModalStore } from "@/store/modal.store";
 
 export const UserAddresses = () => {
   const { userAddresses, isLoadingAddresses, loadMyAddresses } = useAuthStore();

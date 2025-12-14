@@ -1,6 +1,6 @@
-import { useCartStore } from "@store/cart.store";
-import { formatCurrency } from "@utils/currency";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
+import { useCartStore } from "@/store/cart.store";
+import { formatCurrency } from "@/utils/currency";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 
 export const SubtotalDisplay = () => {
   const { calculateSubtotalItem, cartItem } = useCartStore();

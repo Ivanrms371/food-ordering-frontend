@@ -1,4 +1,4 @@
-import { BrandLogo } from "@components/ui/BrandLogo";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 import React from "react";
 
 export const Header = () => {

@@ -1,5 +1,5 @@
-import { PopularDishResponse } from "@interfaces/dish.interface";
-import { UserAddress } from "@interfaces/user.interface";
+import { PopularDishResponse } from "@/interfaces/dish.interface";
+import { UserAddress } from "@/interfaces/user.interface";
 import { create } from "zustand";
 
 interface ModalPropsMap {

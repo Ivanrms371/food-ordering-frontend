@@ -1,4 +1,4 @@
-import { ElementAnimated } from "@components/animated/ElementAnimated";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
 import React, { ForwardRefExoticComponent, RefAttributes } from "react";
 import { SVGProps } from "react";
 

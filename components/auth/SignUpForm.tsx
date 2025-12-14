@@ -1,5 +1,5 @@
 "use client";
-import authService from "@services/auth/authService";
+import authService from "@/services/auth/authService";
 
 export const SignUpForm = () => {
   return (

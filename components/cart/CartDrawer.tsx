@@ -2,18 +2,21 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useCartUIStore } from "@store/cart-ui.store";
-import { XMarkIcon } from "@node_modules/@heroicons/react/24/solid";
+import { useCartUIStore } from "@/store/cart-ui.store";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import { CartList } from "./CartList";
 import { OrderSummary } from "./OrderSummary";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
-import { ElementAnimated } from "@components/animated/ElementAnimated";
-import { useCartStore } from "@store/cart.store";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
+import { useCartStore } from "@/store/cart.store";
 import Link from "next/link";
+import { useModalStore } from "@/store/modal.store";
+import { CartItem } from "@/interfaces/order-item.interface";
 
 export const CartDrawer = () => {
-  const { isCartOpen, closeCart } = useCartUIStore();
-  const { isEmpty } = useCartStore();
+  const { isCartOpen, closeCart, setShouldOpenCart } = useCartUIStore();
+  const { isEmpty, setCartItem, cart } = useCartStore();
+  const { openModal } = useModalStore();
 
   const [showEmpty, setShowEmpty] = useState(false);
 
@@ -26,14 +29,23 @@ export const CartDrawer = () => {
   }, [isCartOpen]);
 
   useEffect(() => {
-    if (isEmpty()) {
-      setTimeout(() => {
+    if (cart.length === 0) {
+      const timeout = setTimeout(() => {
         setShowEmpty(true);
       }, 500);
+
+      return () => clearTimeout(timeout);
     } else {
       setShowEmpty(false);
     }
-  }, [isEmpty()]);
+  }, [cart.length]);
+
+  const onEdit = (item: CartItem) => {
+    closeCart();
+    openModal("OrderItemModal");
+    setCartItem(item);
+    setShouldOpenCart(true);
+  };
 
   return (
     <AnimatePresence mode="sync">
@@ -116,7 +128,7 @@ export const CartDrawer = () => {
               </div>
             ) : (
               <>
-                <CartList />
+                <CartList onEdit={onEdit} />
                 <OrderSummary />
               </>
             )}

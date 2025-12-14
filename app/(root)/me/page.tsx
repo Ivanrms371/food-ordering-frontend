@@ -2,7 +2,7 @@
 import { UserAvatar } from "./ui/UserAvatar";
 import { UserInfo } from "./ui/UserInfo";
 import { UserAddresses } from "./ui/UserAddresses";
-import { useAuthStore } from "@store/auth.store";
+import { useAuthStore } from "@/store/auth.store";
 
 export default function MePage() {
   console.log("AccessToken", useAuthStore.getState().accessToken);

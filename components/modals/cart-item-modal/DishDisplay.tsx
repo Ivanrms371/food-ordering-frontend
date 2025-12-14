@@ -1,8 +1,8 @@
-import { StarRating } from "@components/ui/StarRaiting";
-import { formatCurrency } from "@utils/currency";
-import { PopularDishResponse } from "@interfaces/dish.interface";
-import { ElementAnimated } from "@components/animated/ElementAnimated";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
+import { StarRating } from "@/components/ui/StarRaiting";
+import { formatCurrency } from "@/utils/currency";
+import { PopularDishResponse } from "@/interfaces/dish.interface";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 
 interface Props {
   dish: PopularDishResponse | null;

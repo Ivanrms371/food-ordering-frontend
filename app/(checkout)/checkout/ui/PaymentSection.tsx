@@ -1,10 +1,14 @@
-import {
-  BanknotesIcon,
-  CreditCardIcon,
-} from "@node_modules/@heroicons/react/24/outline";
-import React from "react";
+import { BanknotesIcon, CreditCardIcon } from "@heroicons/react/24/outline";
+import { useCheckoutStore } from "@/store/checkout.store";
+import { PaymentMethod } from "@/interfaces/checkout.interface";
 
 export const PaymentSection = () => {
+  const { paymentMethod, setPaymentMethod } = useCheckoutStore();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPaymentMethod(e.target.value as PaymentMethod);
+  };
+
   return (
     <div>
       <h3 className="text-2xl font-medium text-gray-700 mb-4">Payment</h3>
@@ -17,7 +21,9 @@ export const PaymentSection = () => {
                 name="paymentMethod"
                 id="payment-online"
                 className="radio-card-input"
-                defaultChecked
+                checked={paymentMethod === "online"}
+                onChange={handleChange}
+                value={"online"}
               />
               <div className="flex flex-col">
                 <span className="font-semibold text-gray-800 text-sm">
@@ -46,6 +52,9 @@ export const PaymentSection = () => {
                 name="paymentMethod"
                 id="payment-card"
                 className="radio-card-input"
+                checked={paymentMethod === "card"}
+                onChange={handleChange}
+                value={"card"}
               />
               <div className="flex flex-col">
                 <span className="font-semibold text-gray-800 text-sm">
@@ -66,6 +75,9 @@ export const PaymentSection = () => {
                 name="paymentMethod"
                 id="payment-cash"
                 className="radio-card-input"
+                checked={paymentMethod === "cash"}
+                onChange={handleChange}
+                value={"cash"}
               />
               <div className="flex flex-col">
                 <span className="font-semibold text-gray-800 text-sm">
@@ -81,11 +93,18 @@ export const PaymentSection = () => {
         </div>
       </form>
 
-      <p className="text-sm mt-6 text-gray-500">
-        After clicking “Pay now”, you will be redirected to the MercadoPago
-        platform to complete your payment. Once the payment is confirmed, we
-        will prepare and deliver your order.
-      </p>
+      {paymentMethod === "online" ? (
+        <p className="text-sm mt-6 text-gray-500">
+          After clicking “Pay”, you will be redirected to MercadoPago to
+          securely complete your payment. Once the payment is confirmed, we will
+          prepare and deliver your order.
+        </p>
+      ) : (
+        <p className="text-sm mt-6 text-gray-500">
+          After clicking “Confirm, we will start preparing your order and
+          deliver it as soon as it’s ready.
+        </p>
+      )}
     </div>
   );
 };

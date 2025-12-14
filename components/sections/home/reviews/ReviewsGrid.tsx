@@ -1,9 +1,9 @@
 "use client";
-import { REVIEWS } from "@data/reviews";
-import { useIsMobile } from "@hooks/isMobile";
-import { StarRating } from "@components/ui/StarRaiting";
-import { ElementAnimated } from "@components/animated/ElementAnimated";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
+import { REVIEWS } from "@/data/reviews";
+import { useIsMobile } from "@/hooks/isMobile";
+import { StarRating } from "@/components/ui/StarRaiting";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 
 export const ReviewsGrid = () => {
   const isMobile = useIsMobile();

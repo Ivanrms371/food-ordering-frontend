@@ -1,4 +1,4 @@
-import { SVGProps } from "@node_modules/@types/react";
+import { SVGProps } from "@types/react";
 
 export const BurgerIcon = (props: SVGProps<SVGSVGElement>) => {
   return (

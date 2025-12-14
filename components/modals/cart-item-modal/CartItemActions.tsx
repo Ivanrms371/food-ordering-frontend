@@ -1,6 +1,6 @@
-import { ElementAnimated } from "@components/animated/ElementAnimated";
-import { useCartStore } from "@store/cart.store";
-import { formatCurrency } from "@utils/currency";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
+import { useCartStore } from "@/store/cart.store";
+import { formatCurrency } from "@/utils/currency";
 
 interface Props {
   onClose: () => void;

@@ -1,6 +1,6 @@
-import { UserAddressFormData } from "@interfaces/user.interface";
-import { api, ErrorHandler } from "@lib/axios";
-import { useAuthStore } from "@store/auth.store";
+import { UserAddressFormData } from "@/interfaces/user.interface";
+import { api, ErrorHandler } from "@/lib/axios";
+import { useAuthStore } from "@/store/auth.store";
 
 export const fetchMyAddresses = async () => {
   try {

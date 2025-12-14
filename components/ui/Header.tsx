@@ -10,14 +10,14 @@ import {
   UserIcon,
   Bars2Icon,
 } from "@heroicons/react/24/outline";
-import { navLinks } from "@constants/navigation";
-import { useAuthStore } from "@store/auth.store";
-import { isRestaurantOpen } from "@utils/open-status";
-import { BrandLogo } from "@components/ui/BrandLogo";
-import { NavigationMenu } from "@components/sections/NavigationMenu";
+import { navLinks } from "@/constants/navigation";
+import { useAuthStore } from "@/store/auth.store";
+import { isRestaurantOpen } from "@/utils/open-status";
+import { BrandLogo } from "@/components/ui/BrandLogo";
+import { NavigationMenu } from "@/components/sections/NavigationMenu";
 import { UserMenu } from "./UserMenu";
-import { useCartStore } from "@store/cart.store";
-import { useCartUIStore } from "@store/cart-ui.store";
+import { useCartStore } from "@/store/cart.store";
+import { useCartUIStore } from "@/store/cart-ui.store";
 
 export const Header = () => {
   const { isAuthenticated, isLoading } = useAuthStore();

@@ -1,21 +1,21 @@
 "use client";
 
 import Modal from "../../ui/Modal";
-import { CartItem } from "@interfaces/order-item.interface";
-import { useModalStore } from "@store/modal.store";
-import dishesService from "@services/dishes/dishesService";
+import { CartItem } from "@/interfaces/order-item.interface";
+import { useModalStore } from "@/store/modal.store";
+import dishesService from "@/services/dishes/dishesService";
 import { DishDisplay } from "./DishDisplay";
 import { CustomizationOptions } from "./CustomizationOptions";
 import { NotesInput } from "./NotesInput";
-import { useCartUIStore } from "@store/cart-ui.store";
-import { useCartStore } from "@store/cart.store";
+import { useCartUIStore } from "@/store/cart-ui.store";
+import { useCartStore } from "@/store/cart.store";
 import { QuantitySelector } from "./QuantitySelector";
 import { SubtotalDisplay } from "./SubtotalDisplay";
 import { CartItemActions } from "./CartItemActions";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { useIsMobile } from "@hooks/isMobile";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
+import { useIsMobile } from "@/hooks/isMobile";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 
 const itemInitialState: CartItem = {
   dish: null,
@@ -27,7 +27,13 @@ const itemInitialState: CartItem = {
 };
 
 export const CartItemModal = () => {
-  const { openCart } = useCartUIStore();
+  const {
+    openCart,
+    hasInteracted,
+    setHasInteracted,
+    shouldOpenCart,
+    setShouldOpenCart,
+  } = useCartUIStore();
   const {
     modals: { OrderItemModal },
     closeModal,
@@ -76,24 +82,26 @@ export const CartItemModal = () => {
   const handleClose = () => {
     closeModal("OrderItemModal");
     setTimeout(() => {
+      if (shouldOpenCart) {
+        openCart();
+        setShouldOpenCart(false);
+      }
       setCartItem(null);
-    }, 300);
+    }, 150);
   };
 
   const handleAddToCart = () => {
     addItemToCart(cartItem);
     closeModal("OrderItemModal");
+    if (!hasInteracted) {
+      openCart();
+      setHasInteracted(true);
+    }
   };
 
   const handleUpdateItemInCart = () => {
     updateItemInCart(cartItem);
-    closeModal("OrderItemModal");
-
-    setTimeout(() => {
-      setCartItem(null);
-
-      openCart();
-    }, 300);
+    handleClose();
   };
 
   return (

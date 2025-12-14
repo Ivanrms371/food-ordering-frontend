@@ -1,5 +1,5 @@
-import { FormWrapper } from "@components/auth/FormWrapper";
-import { SignUpForm } from "@components/auth/SignUpForm";
+import { FormWrapper } from "@/components/auth/FormWrapper";
+import { SignUpForm } from "@/components/auth/SignUpForm";
 
 export default function SignUpPage() {
   return (

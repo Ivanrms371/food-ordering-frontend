@@ -1,6 +1,6 @@
-import { SignInData } from "@interfaces/auth.interface";
-import { api, ErrorHandler } from "@lib/axios";
-import { useAuthStore } from "@store/auth.store";
+import { SignInData } from "@/interfaces/auth.interface";
+import { api, ErrorHandler } from "@/lib/axios";
+import { useAuthStore } from "@/store/auth.store";
 
 class CredentialsStrategy {
   async signIn(data: SignInData) {

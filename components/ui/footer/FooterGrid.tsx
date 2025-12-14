@@ -1,6 +1,6 @@
-import { footerItems } from "@constants/footer";
-import { ElementAnimated } from "@components/animated/ElementAnimated";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
+import { footerItems } from "@/constants/footer";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 
 export const FooterGrid = () => {
   return (

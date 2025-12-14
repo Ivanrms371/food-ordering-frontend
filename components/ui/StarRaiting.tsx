@@ -1,5 +1,5 @@
-import { ElementAnimated } from "@components/animated/ElementAnimated";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 import { StarIcon } from "@heroicons/react/16/solid";
 
 interface StarRatingProps {

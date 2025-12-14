@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { useAuthStore } from "@store/auth.store";
+import { useAuthStore } from "@/store/auth.store";
 import { twMerge } from "tailwind-merge";
-import authService from "@services/auth/authService";
+import authService from "@/services/auth/authService";
 
 interface Props {
   isMenuOpen: boolean;

@@ -1,7 +1,7 @@
-import { PopularDishResponse } from "@interfaces/dish.interface";
+import { PopularDishResponse } from "@/interfaces/dish.interface";
 import { DishCard } from "./DishCard";
 import { DishCardSkeleton } from "./DishCardSkeleton";
-import { useIsMobile } from "@hooks/isMobile";
+import { useIsMobile } from "@/hooks/isMobile";
 
 interface Props {
   dishes: PopularDishResponse[];

@@ -1,6 +1,6 @@
-import { ElementAnimated } from "@components/animated/ElementAnimated";
-import { CartItem } from "@interfaces/order-item.interface";
-import { MinusIcon, PlusIcon } from "@node_modules/@heroicons/react/16/solid";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
+import { CartItem } from "@/interfaces/order-item.interface";
+import { MinusIcon, PlusIcon } from "@heroicons/react/16/solid";
 import React from "react";
 
 interface Props {

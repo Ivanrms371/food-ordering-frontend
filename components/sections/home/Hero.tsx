@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
-import { ElementAnimated } from "@components/animated/ElementAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
 
 export const Hero = () => {
   return (

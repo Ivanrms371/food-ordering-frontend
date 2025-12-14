@@ -1,5 +1,5 @@
-import { api } from "@lib/axios";
-import { logger } from "@utils/logger";
+import { api } from "@/lib/axios";
+import { logger } from "@/utils/logger";
 
 class FavoritesService {
   constructor() {}

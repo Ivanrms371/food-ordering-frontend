@@ -1,5 +1,5 @@
-import { socialMediaLinks } from "@constants/footer";
-import { ElementAnimated } from "@components/animated/ElementAnimated";
+import { socialMediaLinks } from "@/constants/footer";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
 
 export const SocialMediaLinks = () => {
   return (

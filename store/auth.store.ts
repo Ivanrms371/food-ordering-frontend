@@ -1,6 +1,6 @@
-import { User, UserAddress } from "@interfaces/user.interface";
-import { fetchMyAddresses } from "@services/userAddressService";
-import { fetchMyProfile } from "@services/userService";
+import { User, UserAddress } from "@/interfaces/user.interface";
+import { fetchMyAddresses } from "@/services/userAddressService";
+import { fetchMyProfile } from "@/services/userService";
 import { create } from "zustand";
 
 interface AuthState {

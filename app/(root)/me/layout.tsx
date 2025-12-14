@@ -6,9 +6,9 @@ import {
   LockClosedIcon,
   ShoppingCartIcon,
   UserIcon,
-} from "@node_modules/@heroicons/react/24/outline";
-import authService from "@services/auth/authService";
-import { useAuthStore } from "@store/auth.store";
+} from "@heroicons/react/24/outline";
+import authService from "@/services/auth/authService";
+import { useAuthStore } from "@/store/auth.store";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";

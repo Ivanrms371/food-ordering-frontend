@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { ArrowUpTrayIcon } from "@heroicons/react/24/outline";
-import { useAuthStore } from "@store/auth.store";
+import { useAuthStore } from "@/store/auth.store";
 
 export const UserAvatar = () => {
   const { user, isLoadingProfile } = useAuthStore();

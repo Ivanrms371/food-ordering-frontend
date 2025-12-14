@@ -1,6 +1,6 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useAuthStore } from "@store/auth.store";
+import { useAuthStore } from "@/store/auth.store";
 import { useEffect } from "react";
 
 export default function CallbackPage() {

@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { SignInData } from "@interfaces/auth.interface";
+import { SignInData } from "@/interfaces/auth.interface";
 import { AuthButton } from "./ui/AuthButton";
 import { toast } from "sonner";
-import authService from "@services/auth/authService";
+import authService from "@/services/auth/authService";
 
 export const SignInForm = () => {
   const {

@@ -1,7 +1,7 @@
-import { FacebookIcon } from "@components/icons/FacebookIcon";
-import { InstagramIcon } from "@components/icons/InstagramIcon";
-import { TIktokIcon } from "@components/icons/TIktokIcon";
-import { TwitterIcon } from "@components/icons/TwitterIcon";
+import { FacebookIcon } from "@/components/icons/FacebookIcon";
+import { InstagramIcon } from "@/components/icons/InstagramIcon";
+import { TIktokIcon } from "@/components/icons/TIktokIcon";
+import { TwitterIcon } from "@/components/icons/TwitterIcon";
 import {
   ChatBubbleBottomCenterTextIcon,
   PhoneIcon,

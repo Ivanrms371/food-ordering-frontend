@@ -24,11 +24,14 @@ export const calculateDiscount = (
   return value;
 };
 
-export const calculateTotalWithDiscount = (
-  price: number,
+export const calculateDiscountValue = (
+  total: number,
   discount: number,
   type: "percentage" | "fixed"
 ) => {
   const discountValue = calculateDiscount(discount, type);
-  return price - discountValue;
+  if (type === "percentage") {
+    return total * discountValue;
+  }
+  return discountValue;
 };

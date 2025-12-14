@@ -1,7 +1,14 @@
+import { useCheckoutStore } from "@/store/checkout.store";
 import { BuildingStorefrontIcon, TruckIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import { DeliveryMethod } from "@/interfaces/checkout.interface";
 
 export const DeliverySection = () => {
+  const { deliveryMethod, setDeliveryMethod } = useCheckoutStore();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDeliveryMethod(e.target.value as DeliveryMethod);
+  };
+
   return (
     <div>
       <h3 className="text-2xl font-medium text-gray-700 mb-4">
@@ -15,7 +22,9 @@ export const DeliverySection = () => {
               name="delivery"
               id="delivery-ship"
               className="radio-card-input"
-              defaultChecked
+              value={"delivery"}
+              checked={deliveryMethod === "delivery"}
+              onChange={handleChange}
             />
             <div className="flex flex-col">
               <span className="font-semibold text-gray-800 text-sm">
@@ -35,6 +44,9 @@ export const DeliverySection = () => {
               name="delivery"
               id="delivery-pickup"
               className="radio-card-input"
+              value={"pickup"}
+              checked={deliveryMethod === "pickup"}
+              onChange={handleChange}
             />
             <div className="flex flex-col">
               <span className="font-semibold text-gray-800 text-sm ">

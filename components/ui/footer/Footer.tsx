@@ -4,13 +4,13 @@ import {
   PhoneIcon,
   MapPinIcon,
   ClockIcon,
-} from "@node_modules/@heroicons/react/24/outline";
+} from "@heroicons/react/24/outline";
 import { BrandLogo } from "../BrandLogo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { FooterGrid } from "./FooterGrid";
-import { TextBlockAnimated } from "@components/animated/TextBlockAnimated";
-import { ElementAnimated } from "@components/animated/ElementAnimated";
+import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
+import { ElementAnimated } from "@/components/animated/ElementAnimated";
 import { SocialMediaLinks } from "./SocialMediaLinks";
 
 export const Footer = () => {
