@@ -3,7 +3,7 @@ import { formatCurrency } from "@/utils/currency";
 import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 
 export const SubtotalDisplay = () => {
-  const { calculateSubtotalItem, cartItem } = useCartStore();
+  const { calculateSubtotalItem, currentItem } = useCartStore();
 
   return (
     <TextBlockAnimated
@@ -15,7 +15,7 @@ export const SubtotalDisplay = () => {
       <p className="text-lg font-semibold text-gray-600 text-nowrap">
         Subtotal:{" "}
         <span className="font-semibold">
-          {formatCurrency(calculateSubtotalItem(cartItem))}
+          {formatCurrency(calculateSubtotalItem(currentItem))}
         </span>
       </p>
     </TextBlockAnimated>

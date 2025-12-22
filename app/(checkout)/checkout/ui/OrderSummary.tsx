@@ -9,17 +9,15 @@ import {
 import { CartItem as CartItemType } from "@/interfaces/order-item.interface";
 import { useCartUIStore } from "@/store/cart-ui.store";
 import { useModalStore } from "@/store/modal.store";
-import {
-  discountsService,
-  DiscountsService,
-} from "@/services/discounts/discountsService";
 import { useCheckoutStore } from "@/store/checkout.store";
 import { useEffect, useState } from "react";
+import { discountService } from "@/services/discounts/discountsService";
 
 export const OrderSummary = () => {
   const router = useRouter();
   const [discountCode, setDiscountCode] = useState("");
-  const { cart, getCartTotal, isEmpty, setCartItem } = useCartStore();
+  const [error, setError] = useState<string | null>("");
+  const { items, getCartTotal, isEmpty, setCartItem } = useCartStore();
   const { setDiscount, discount, calculateTotal } = useCheckoutStore();
   const { openModal } = useModalStore();
 
@@ -27,7 +25,7 @@ export const OrderSummary = () => {
     if (isEmpty()) {
       router.push("/");
     }
-  }, [cart]);
+  }, [items]);
 
   const onEdit = (item: CartItemType) => {
     openModal("OrderItemModal");
@@ -36,31 +34,41 @@ export const OrderSummary = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const discount = await discountsService.getDiscountByCode(
+    if (discountCode.trim() === "") {
+      setError("Please enter a discount code");
+      return;
+    }
+
+    setError(null);
+
+    const discount = await discountService.getDiscountByCode(
       discountCode,
       getCartTotal()
     );
 
-    setDiscount({
-      code: discount.code,
-      value: discount.value,
-      type: discount.type,
-    });
+    if (discount.success) {
+      setDiscount({
+        code: discount.code,
+        value: discount.value,
+        type: discount.type,
+      });
+    } else {
+      setError("Please enter a valid code");
+    }
   };
 
-  console.log(discount);
   return (
     <div>
       <div className="sticky top-10 bg-gray-50 rounded-3xl p-8 shadow-md min-h-[300px]">
         <div className="flex flex-col gap-4">
           <h2 className="text-gray-800 text-2xl font-medium">Order summary</h2>
-          {cart.map((item, index) => (
+          {items.map((item, index) => (
             <CartItem key={index} index={index} item={item} onEdit={onEdit} />
           ))}
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="discount-code">Discount code</label>
-          <form className="flex gap-2" onSubmit={onSubmit}>
+          <form className="flex gap-2 w-full" onSubmit={onSubmit}>
             <input
               type="text"
               id="discount-code"
@@ -70,10 +78,11 @@ export const OrderSummary = () => {
               }
               value={discountCode}
             />
-            <button type="submit" className="button-secondary rounded-md">
+            <button type="submit" className="button-secondary rounded-md py-2">
               Apply
             </button>
           </form>
+          {error && <p className="text-red-500 text-sm">{error}</p>}
 
           <div className="flex flex-col gap-4 mt-6">
             <div className="flex justify-between ">

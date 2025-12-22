@@ -6,10 +6,9 @@ import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 
 interface Props {
   dish: PopularDishResponse | null;
-  isMobile: boolean;
 }
 
-export const DishDisplay = ({ dish, isMobile }: Props) => {
+export const DishDisplay = ({ dish }: Props) => {
   return (
     <div className="flex flex-col md:flex-row items-center md:gap-8 gap-2 py-2">
       <ElementAnimated

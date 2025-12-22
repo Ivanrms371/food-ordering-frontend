@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { SignInData } from "@/interfaces/auth.interface";
 import { AuthButton } from "./ui/AuthButton";
@@ -17,17 +17,19 @@ export const SignInForm = () => {
   } = useForm<SignInData>();
   const router = useRouter();
 
+  const redirect = useSearchParams().get("redirect") ?? "/";
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (data: SignInData) => {
     setIsLoading(true);
+    console.log(data);
     toast.loading("Signing in...");
     const res = await authService.signInCredentials(data);
     setIsLoading(false);
     toast.dismiss();
     if (!res.error) {
       toast.success("Redirecting...");
-      router.push("/me");
+      router.push(redirect);
     } else {
       toast.error(res.error);
     }
@@ -85,7 +87,7 @@ export const SignInForm = () => {
         <button
           className="button-provider"
           type="button"
-          onClick={() => authService.signInWithGoogle()}
+          onClick={() => authService.signInWithGoogle(redirect)}
         >
           <img
             src="/images/google.png"
@@ -97,7 +99,7 @@ export const SignInForm = () => {
         <button
           className="button-provider"
           type="button"
-          onClick={() => authService.signInWithFacebook()}
+          onClick={() => authService.signInWithFacebook(redirect)}
         >
           <img
             src="/images/facebook.png"

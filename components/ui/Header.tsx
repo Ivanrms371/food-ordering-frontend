@@ -4,8 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import {
-  StopCircleIcon,
-  PlayCircleIcon,
   ShoppingCartIcon,
   UserIcon,
   Bars2Icon,
@@ -34,7 +32,7 @@ export const Header = () => {
 
   useEffect(() => {
     const scroll = window.scrollY;
-    setShowHeader(scroll < 100);
+    setShowHeader(scroll < 20);
   }, []);
 
   useEffect(() => {

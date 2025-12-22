@@ -38,10 +38,9 @@ export const CartItemModal = () => {
     modals: { OrderItemModal },
     closeModal,
   } = useModalStore();
-  const isMobile = useIsMobile();
 
   const {
-    cartItem,
+    currentItem,
     setCartItem,
     decreaseQuantity,
     increaseQuantity,
@@ -50,15 +49,15 @@ export const CartItemModal = () => {
   } = useCartStore();
 
   const isOpen = OrderItemModal?.isOpen ?? false;
-  const isEditing = (cartItem?.cartItemId?.length ?? 0) > 0;
+  const isEditing = (currentItem?.cartItemId?.length ?? 0) > 0;
 
   const { data: options } = useQuery({
-    queryKey: ["dish-options", cartItem?.dish?.id ?? ""],
-    queryFn: () => dishesService.getDishOptions(cartItem?.dish?.id ?? ""),
-    enabled: !!cartItem?.dish && !isEditing,
+    queryKey: ["dish-options", currentItem?.dish?.id ?? ""],
+    queryFn: () => dishesService.getDishOptions(currentItem?.dish?.id ?? ""),
+    enabled: !!currentItem?.dish && !isEditing,
   });
 
-  const dish = cartItem?.dish ?? null;
+  const dish = currentItem?.dish ?? null;
 
   useEffect(() => {
     if (!dish || !options || isEditing) return;
@@ -91,7 +90,7 @@ export const CartItemModal = () => {
   };
 
   const handleAddToCart = () => {
-    addItemToCart(cartItem);
+    addItemToCart(currentItem);
     closeModal("OrderItemModal");
     if (!hasInteracted) {
       openCart();
@@ -100,15 +99,15 @@ export const CartItemModal = () => {
   };
 
   const handleUpdateItemInCart = () => {
-    updateItemInCart(cartItem);
+    updateItemInCart(currentItem);
     handleClose();
   };
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose} size="3xl">
-      <DishDisplay isMobile={isMobile} dish={dish} />
+      <DishDisplay dish={dish} />
       <CustomizationOptions
-        customizationCategories={cartItem?.customizationCategories ?? []}
+        customizationCategories={currentItem?.customizationCategories ?? []}
       />
       <NotesInput />
 
@@ -130,7 +129,7 @@ export const CartItemModal = () => {
               <QuantitySelector
                 decreaseQuantity={decreaseQuantity}
                 increaseQuantity={increaseQuantity}
-                cartItem={cartItem}
+                currentItem={currentItem}
               />
             </div>
             <SubtotalDisplay />

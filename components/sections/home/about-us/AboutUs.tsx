@@ -7,7 +7,7 @@ import { FeatureCard } from "./FeatureCard";
 
 export const AboutUs = () => {
   return (
-    <section className="py-0 bg-gray-900">
+    <section className="py-0 bg-gray-950">
       <div className="min-h-screen relative">
         <div className="w-full py-18 flex justify-center gap-10 uppercase text-6xl xs:text-7xl md:text-9xl lg:text-[184px] scale-y-150 font-mono text-gray-300 font-light text-center absolute top-0 left-1/2 transform -translate-x-1/2">
           <LyricsAnimated text={"experience"} />

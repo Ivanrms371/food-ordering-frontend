@@ -25,21 +25,21 @@ export const Footer = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1.25]);
 
   return (
-    <footer className="bg-gray-900 mt-40">
+    <footer className="bg-gray-950 mt-40">
       <div className="relative overflow-hidden" ref={ref}>
         <div className="container py-10">
-          <div className="absolute flex justify-center left-1/2 w-full -translate-x-1/2 -top-42 md:-top-50 lg:-top-80">
+          {/* <div className="absolute flex justify-center left-1/2 w-full -translate-x-1/2 -top-42 md:-top-50 lg:-top-80">
             <motion.img
               src="/footer-image.png"
               alt="Footer Pizza Image"
               style={{ rotate, scale }}
               className="w-[320px] md:w-[400px] lg:w-[550px]"
             />
-          </div>
+          </div> */}
           <FooterGrid />
         </div>
 
-        <div className="mt-10 border-t border-gray-800">
+        <div className="mt-10 border-t border-gray-900">
           <div className="container py-10">
             <div className="flex flex-col-reverse gap-10 sm:flex-row justify-between items-center">
               <TextBlockAnimated

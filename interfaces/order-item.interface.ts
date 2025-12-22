@@ -2,12 +2,10 @@ import { CustomizationCategory } from "./customization.interface";
 import { PopularDishResponse } from "./dish.interface";
 
 export interface OrderItem {
-  dishId: string; // go backend
-  quantity: number; // go backend
-
-  notes?: string; // go backend
-  discountCode?: string; // go backend
-  customizationOptions: string[]; // go backend
+  dishId: string;
+  quantity: number;
+  notes?: string;
+  customizationOptions: string[];
 }
 
 export interface CartItem {

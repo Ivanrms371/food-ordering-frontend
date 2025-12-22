@@ -24,7 +24,7 @@ export const FeatureCard = ({ feature, index }: Props) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ amount: 0.5, once: true }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="size-20 p-7 bg-gray-800 rounded-full"
+        className="size-20 p-7 bg-gray-800 rounded-full shadow-g border-gray-700 border shadow-gray-900"
       >
         <feature.Icon className="size-6 text-gray-300" />
       </ElementAnimated>

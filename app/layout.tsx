@@ -9,6 +9,7 @@ import AddressModal from "@/components/modals/AddressModal";
 import { CartItemModal } from "@/components/modals/cart-item-modal/CartItemModal";
 import { TanstackProvider } from "@/components/providers/TanstackProvider";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { ChangeMethodModal } from "@/components/modals/ChangeMethodModal";
 
 const inter = localFont({
   src: [
@@ -79,6 +80,7 @@ export default function RootLayout({
           {children}
           <AddressModal />
           <CartItemModal />
+          <ChangeMethodModal />
           <CartDrawer />
         </TanstackProvider>
       </body>

@@ -4,7 +4,7 @@ import { TextBlockAnimated } from "@/components/animated/TextBlockAnimated";
 
 export const FooterGrid = () => {
   return (
-    <ul className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-64">
+    <ul className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-10">
       {footerItems.map((item, index) => (
         <li key={item.title}>
           <div className="flex flex-col items-center gap-2">
@@ -13,7 +13,7 @@ export const FooterGrid = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ amount: 0.5, once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="size-20 p-7 bg-gray-800 rounded-full"
+              className="size-20 p-7 bg-gray-800 rounded-full border-gray-700 border shadow-gray-900"
             >
               <item.Icon className="size-6 text-gray-300" />
             </ElementAnimated>
@@ -27,6 +27,7 @@ export const FooterGrid = () => {
 
             {item.description.map((description, i) => (
               <TextBlockAnimated
+                key={description}
                 initial={{ opacity: 0, y: 10 }}
                 transition={{
                   duration: 0.5,

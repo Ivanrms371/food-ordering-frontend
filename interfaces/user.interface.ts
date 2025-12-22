@@ -14,10 +14,10 @@ export interface User {
 export interface UserAddress {
   id: string;
   label: string;
-  street: string;
-  apartment?: string | null;
-  city: string;
-  instructions?: string | null;
+  street1: string;
+  street2?: string;
+  apartment?: string;
+  deliveryInstructions?: string | null;
 }
 
 export interface UserAddressFormData {

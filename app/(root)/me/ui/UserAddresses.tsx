@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import { useAuthStore } from "@/store/auth.store";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
@@ -84,13 +85,12 @@ export const UserAddresses = () => {
                 </div>
 
                 <p className="text-gray-800 text-sm mb-2">
-                  {address.street}
-                  {address.apartment ? `, Apt ${address.apartment}` : ""},{" "}
-                  {address.city}
+                  {address.street1}
+                  {address.street2 ? `, Apt ${address.apartment}` : ""},{" "}
                 </p>
-                {address.instructions && (
+                {address?.deliveryInstructions && (
                   <p className="text-gray-500 text-sm">
-                    Notes: {address.instructions}
+                    Notes: {address.deliveryInstructions}
                   </p>
                 )}
               </div>

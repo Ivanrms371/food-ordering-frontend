@@ -6,6 +6,9 @@ interface ModalPropsMap {
   AddressModal: {
     initialData: UserAddress | null;
   };
+  ChangeMethodModal: {
+    orderId: string;
+  };
   OrderItemModal: {};
 }
 

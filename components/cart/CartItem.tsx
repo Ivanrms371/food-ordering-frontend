@@ -140,7 +140,7 @@ export const CartItem = ({ item, index, onEdit }: Props) => {
           <QuantitySelector
             decreaseQuantity={() => decreaseQuantity(item.cartItemId)}
             increaseQuantity={() => increaseQuantity(item.cartItemId)}
-            cartItem={item}
+            currentItem={item}
           />
           <ElementAnimated
             initial={{ opacity: 0, scale: 0.75 }}

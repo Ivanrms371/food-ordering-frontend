@@ -5,7 +5,7 @@ export type Address = {
   street1: string;
   street2: string;
   apartment: string;
-  phoneNumber: string;
-  instructions: string;
+  deliveryInstructions: string;
   saveAddress: boolean;
+  label: string;
 };

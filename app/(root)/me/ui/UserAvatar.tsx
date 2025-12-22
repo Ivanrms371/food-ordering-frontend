@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+"use client";
 import { ArrowUpTrayIcon } from "@heroicons/react/24/outline";
 import { useAuthStore } from "@/store/auth.store";
 
@@ -11,7 +11,7 @@ export const UserAvatar = () => {
     <div className="flex items-end gap-4 mt-4 ">
       <div className="size-24 group relative">
         <img
-          src={user?.avatar ?? "https://i.pravatar.cc/150?img=2"}
+          src={"/avatar/image.png"}
           alt=""
           className="rounded-full size-24 object-cover shadow"
         />

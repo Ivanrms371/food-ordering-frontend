@@ -58,7 +58,7 @@ export const PickupLocation = () => {
         </div>
       </div>
 
-      <button onClick={handleClick} className="button-secondary mb-4 w-full">
+      <button onClick={handleClick} className="button-secondary mb-4 w-fit">
         Use my location
       </button>
 

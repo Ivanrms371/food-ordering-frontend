@@ -13,7 +13,7 @@ export const CartItemActions = ({
   addItemToCart,
   updateItemInCart,
 }: Props) => {
-  const { calculateSubtotalItem, cartItem } = useCartStore();
+  const { calculateSubtotalItem, currentItem } = useCartStore();
   return (
     <ElementAnimated
       initial={{ opacity: 0, scaleX: 0.9 }}
@@ -26,15 +26,15 @@ export const CartItemActions = ({
         type="button"
         className="button-primary w-full mt-4"
         onClick={() => {
-          if (cartItem?.cartItemId) {
+          if (currentItem?.cartItemId) {
             updateItemInCart();
             return;
           }
           addItemToCart();
         }}
       >
-        {cartItem?.cartItemId ? "Edit" : "Add"} (
-        {formatCurrency(calculateSubtotalItem(cartItem))})
+        {currentItem?.cartItemId ? "Edit" : "Add"} (
+        {formatCurrency(calculateSubtotalItem(currentItem))})
       </button>
     </ElementAnimated>
   );

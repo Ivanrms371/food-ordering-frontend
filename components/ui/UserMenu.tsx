@@ -36,7 +36,7 @@ export const UserMenu = ({ isMenuOpen, setIsMenuOpen }: Props) => {
         Profile
       </Link>
       <Link
-        href="/orders"
+        href="/me/orders"
         className="hover:bg-gray-100 px-6 py-3 text-gray-700 hover:text-gray-950 transition duration-300 ease-in-out text-sm"
       >
         Orders

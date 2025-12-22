@@ -3,27 +3,31 @@ import {
   DeliveryMethod,
   PaymentMethod,
 } from "@/interfaces/checkout.interface";
+import { OrderItem } from "@/interfaces/order-item.interface";
 import { calculateDiscountValue } from "@/utils/currency";
 import { create } from "zustand";
 
 export interface CheckoutStore {
-  deliveryMethod: DeliveryMethod;
-  setDeliveryMethod: (method: DeliveryMethod) => void;
+  selectedAddressId?: string;
+  setSelectedAddressId: (addressId?: string) => void;
 
   address: Address;
   setAddress: (address: Address) => void;
+
+  deliveryMethod: DeliveryMethod;
+  setDeliveryMethod: (method: DeliveryMethod) => void;
 
   paymentMethod: PaymentMethod;
   setPaymentMethod: (method: PaymentMethod) => void;
 
   discount: {
-    code: string | null;
+    code?: string;
     value: number;
     type: "percentage" | "fixed";
   };
 
   setDiscount: (discount: {
-    code: string | null;
+    code?: string;
     value: number;
     type: "percentage" | "fixed";
   }) => void;
@@ -35,33 +39,31 @@ const addressInitialValue: Address = {
   street1: "",
   street2: "",
   apartment: "",
-  phoneNumber: "",
-  instructions: "",
+  deliveryInstructions: "",
   saveAddress: false,
+  label: "",
 };
 
 const useCheckoutStore = create<CheckoutStore>()((set, get) => ({
   deliveryMethod: "delivery",
-  setDeliveryMethod: (method: DeliveryMethod) =>
-    set({ deliveryMethod: method }),
+  setDeliveryMethod: (method) => set({ deliveryMethod: method }),
+
+  selectedAddressId: undefined,
+  setSelectedAddressId: (addressId) => set({ selectedAddressId: addressId }),
 
   address: addressInitialValue,
-  setAddress: (address: Address) => set({ address }),
+  setAddress: (address) => set({ address }),
 
   paymentMethod: "cash",
-  setPaymentMethod: (method: PaymentMethod) => set({ paymentMethod: method }),
+  setPaymentMethod: (method) => set({ paymentMethod: method }),
 
   discount: {
-    code: null,
+    code: undefined,
     value: 0,
     type: "percentage",
   },
 
-  setDiscount: (discount: {
-    code: string | null;
-    value: number;
-    type: "percentage" | "fixed";
-  }) => set({ discount }),
+  setDiscount: (discount) => set({ discount }),
 
   calculateTotal: (cartSubtotal) => {
     const { type, value } = get().discount;

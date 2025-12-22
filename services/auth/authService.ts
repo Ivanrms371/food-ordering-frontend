@@ -14,12 +14,12 @@ class AuthService {
     return this.credentialsStrategy.signUp(data);
   }
 
-  signInWithGoogle() {
-    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`;
+  signInWithGoogle(redirect: string = "/") {
+    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google?redirect=${redirect}`;
   }
 
-  signInWithFacebook() {
-    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/facebook`;
+  signInWithFacebook(redirect: string = "/") {
+    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/facebook?redirect=${redirect}`;
   }
 
   async refreshSession() {

@@ -3,8 +3,8 @@ import { persist } from "zustand/middleware";
 import { CartItem } from "@/interfaces/order-item.interface";
 
 interface CartStore {
-  cart: CartItem[];
-  cartItem: CartItem | null;
+  items: CartItem[];
+  currentItem: CartItem | null;
 
   isEmpty: () => boolean;
   setCartItem: (item: CartItem | null) => void;
@@ -32,13 +32,13 @@ interface CartStore {
 export const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
-      cart: [],
-      cartItem: null,
+      items: [],
+      currentItem: null,
       openCart: false,
 
-      isEmpty: () => get().cart.length === 0,
+      isEmpty: () => get().items.length === 0,
 
-      setCartItem: (item) => set({ cartItem: item }),
+      setCartItem: (item) => set({ currentItem: item }),
 
       calculateSubtotalItem: (item: CartItem | null) => {
         if (!item) return 0;
@@ -64,21 +64,21 @@ export const useCartStore = create<CartStore>()(
       },
 
       syncCartItem: () => {
-        const { cartItem, cart, updateItemInCart } = get();
-        if (!cartItem) return;
+        const { currentItem, items, updateItemInCart } = get();
+        if (!currentItem) return;
 
-        const exists = cart.findIndex(
-          (i) => i.cartItemId === cartItem.cartItemId
+        const exists = items.findIndex(
+          (i) => i.cartItemId === currentItem.cartItemId
         );
         if (exists !== -1) {
-          updateItemInCart(cartItem);
+          updateItemInCart(currentItem);
         }
       },
 
-      // helper interno para actualizar cantidad por id en el cart
+      // helper interno para actualizar cantidad por id en el items
       updateItemQuantityById: (cartItemId: string, quantity: number) => {
         set((state) => ({
-          cart: state.cart.map((item) =>
+          items: state.items.map((item) =>
             item.cartItemId === cartItemId ? { ...item, quantity } : item
           ),
         }));
@@ -91,9 +91,9 @@ export const useCartStore = create<CartStore>()(
         }
 
         set((state) => {
-          if (!state.cartItem) return state;
-          const updated = { ...state.cartItem, quantity };
-          const newState = { cartItem: updated };
+          if (!state.currentItem) return state;
+          const updated = { ...state.currentItem, quantity };
+          const newState = { currentItem: updated };
           get().syncCartItem();
           return newState;
         });
@@ -102,19 +102,19 @@ export const useCartStore = create<CartStore>()(
       increaseQuantity: (cartItemId?) => {
         console.log(cartItemId);
         if (cartItemId) {
-          const item = get().cart.find((i) => i.cartItemId === cartItemId);
+          const item = get().items.find((i) => i.cartItemId === cartItemId);
           if (!item) return;
           get().updateItemQuantityById(cartItemId, item.quantity + 1);
           return;
         }
 
         set((state) => {
-          if (!state.cartItem) return state;
+          if (!state.currentItem) return state;
           const updated = {
-            ...state.cartItem,
-            quantity: state.cartItem.quantity + 1,
+            ...state.currentItem,
+            quantity: state.currentItem.quantity + 1,
           };
-          const newState = { cartItem: updated };
+          const newState = { currentItem: updated };
           get().syncCartItem();
           return newState;
         });
@@ -122,19 +122,20 @@ export const useCartStore = create<CartStore>()(
 
       decreaseQuantity: (cartItemId?) => {
         if (cartItemId) {
-          const item = get().cart.find((i) => i.cartItemId === cartItemId);
+          const item = get().items.find((i) => i.cartItemId === cartItemId);
           if (!item || item.quantity <= 1) return;
           get().updateItemQuantityById(cartItemId, item.quantity - 1);
           return;
         }
 
         set((state) => {
-          if (!state.cartItem || state.cartItem.quantity <= 1) return state;
+          if (!state.currentItem || state.currentItem.quantity <= 1)
+            return state;
           const updated = {
-            ...state.cartItem,
-            quantity: state.cartItem.quantity - 1,
+            ...state.currentItem,
+            quantity: state.currentItem.quantity - 1,
           };
-          const newState = { cartItem: updated };
+          const newState = { currentItem: updated };
           get().syncCartItem();
           return newState;
         });
@@ -144,14 +145,14 @@ export const useCartStore = create<CartStore>()(
         if (!item) return;
         const id = window.crypto.randomUUID();
         set((state) => ({
-          cart: [...state.cart, { ...item, cartItemId: id }],
+          items: [...state.items, { ...item, cartItemId: id }],
         }));
       },
 
       removeItemFromCart: (item) => {
         set((state) => ({
-          cart: state.cart.filter(
-            (cartItem) => cartItem.cartItemId !== item.cartItemId
+          items: state.items.filter(
+            (currentItem) => currentItem.cartItemId !== item.cartItemId
           ),
         }));
       },
@@ -159,34 +160,34 @@ export const useCartStore = create<CartStore>()(
       updateItemInCart: (item) => {
         if (!item) return;
         set((state) => ({
-          cart: state.cart.map((cartItem) =>
-            cartItem.cartItemId === item.cartItemId ? item : cartItem
+          items: state.items.map((currentItem) =>
+            currentItem.cartItemId === item.cartItemId ? item : currentItem
           ),
         }));
       },
 
-      clearCart: () => set({ cart: [] }),
+      clearCart: () => set({ items: [] }),
 
       getCartTotal: () =>
-        get().cart.reduce(
+        get().items.reduce(
           (total, item) => total + get().calculateSubtotalItem(item),
           0
         ),
 
       getSubtotal: () =>
-        get().cart.reduce(
+        get().items.reduce(
           (total, item) => total + item.quantity * item.priceUnit,
           0
         ),
 
       getCartLength: () =>
-        get().cart.reduce((total, item) => total + item.quantity, 0),
+        get().items.reduce((total, item) => total + item.quantity, 0),
     }),
 
     {
-      name: "cart-storage",
+      name: "items-storage",
       partialize: (state) => ({
-        cart: state.cart,
+        items: state.items,
       }),
     }
   )

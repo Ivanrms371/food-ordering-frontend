@@ -10,14 +10,14 @@ interface Props {
 }
 
 export const CartList = ({ onEdit }: Props) => {
-  const { cart } = useCartStore();
+  const { items } = useCartStore();
 
-  console.log(cart);
+  console.log(items);
   return (
     <div className="relative flex-1 overflow-y-auto p-5 pt-0">
       <ul className="flex flex-col relative z-0">
         <AnimatePresence>
-          {cart.map((item, index) => (
+          {items.map((item, index) => (
             <CartItem
               key={item.cartItemId}
               item={item}

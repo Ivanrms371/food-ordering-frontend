@@ -6,13 +6,13 @@ import React from "react";
 interface Props {
   decreaseQuantity: () => void;
   increaseQuantity: () => void;
-  cartItem: CartItem | null;
+  currentItem: CartItem | null;
 }
 
 export const QuantitySelector = ({
   decreaseQuantity,
   increaseQuantity,
-  cartItem,
+  currentItem,
 }: Props) => {
   return (
     <div className="flex gap-8">
@@ -32,7 +32,7 @@ export const QuantitySelector = ({
         </button>
 
         <div className="h-6 w-10 text-center bg-gray-100 outline-none rounded-full text-sm flex justify-center items-center">
-          {cartItem?.quantity ?? 1}
+          {currentItem?.quantity ?? 1}
         </div>
 
         <button

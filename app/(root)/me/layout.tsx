@@ -25,8 +25,8 @@ export default function ProfileLayout({
   };
 
   return (
-    <div className="container flex h-[calc(100vh-8rem)] pb-20 flex-row">
-      <aside className="shadow rounded-3xl w-80 flex flex-col justify-between gap-2 p-2">
+    <div className="container flex min-h-[calc(100vh-8rem)] pb-20 flex-row">
+      <aside className="shadow rounded-3xl w-80 h-[calc(100vh-8rem)] sticky top-28 flex flex-col justify-between gap-2 p-2">
         <nav className="flex flex-col gap-2">
           <Link
             href={"/me"}
@@ -62,7 +62,7 @@ export default function ProfileLayout({
             href={"/me/favorites"}
             className={twMerge(
               " py-4 px-4 text-gray-600 w-full rounded-2xl hover:bg-gray-200/40 flex items-center gap-2",
-              pathname === "/me/orders" && "bg-gray-200/40 "
+              pathname === "/me/favorites" && "bg-gray-200/40 "
             )}
           >
             <HeartIcon className="size-5" />

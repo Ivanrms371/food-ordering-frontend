@@ -15,7 +15,7 @@ import { CartItem } from "@/interfaces/order-item.interface";
 
 export const CartDrawer = () => {
   const { isCartOpen, closeCart, setShouldOpenCart } = useCartUIStore();
-  const { isEmpty, setCartItem, cart } = useCartStore();
+  const { isEmpty, setCartItem, items } = useCartStore();
   const { openModal } = useModalStore();
 
   const [showEmpty, setShowEmpty] = useState(false);
@@ -29,7 +29,7 @@ export const CartDrawer = () => {
   }, [isCartOpen]);
 
   useEffect(() => {
-    if (cart.length === 0) {
+    if (items.length === 0) {
       const timeout = setTimeout(() => {
         setShowEmpty(true);
       }, 500);
@@ -38,7 +38,7 @@ export const CartDrawer = () => {
     } else {
       setShowEmpty(false);
     }
-  }, [cart.length]);
+  }, [items.length]);
 
   const onEdit = (item: CartItem) => {
     closeCart();
